@@ -1,10 +1,11 @@
+import type { CSSProperties } from 'react';
 import { ExternalLink, MapPin } from 'lucide-react';
 import { contactData } from '../data/contact';
 import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function ContactSection() {
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -12,7 +13,7 @@ export function ContactSection() {
       aria-labelledby="contact-heading"
       className="section section--dark grid-backdrop-dark"
     >
-      <div ref={ref} className={`container reveal ${isVisible ? 'is-visible' : ''}`}>
+      <div ref={ref} className={`container ${revealClassName}`}>
         <SectionHeader
           sectionCode={contactData.sectionCode}
           title={contactData.title}
@@ -22,7 +23,7 @@ export function ContactSection() {
         />
 
         <div className="contact-layout">
-          <div className="contact-callout">
+          <div className="contact-callout stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
             <h3 className="contact-callout__title">{contactData.joinCalloutTitle}</h3>
             <p style={{ fontSize: '0.96rem', color: 'var(--color-ink-muted-dark)' }}>
               {contactData.joinCalloutBody}
@@ -68,7 +69,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div>
+          <div className="stagger-item" style={{ '--stagger-idx': 1 } as CSSProperties}>
             <div className="mono-label" style={{ color: 'var(--color-ink-muted-dark)', marginBottom: '0.85rem' }}>
               OFFICIAL CHANNELS & VERIFICATION STATUS
             </div>

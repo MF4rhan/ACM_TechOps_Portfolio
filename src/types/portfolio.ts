@@ -34,6 +34,21 @@ export interface QuickHighlight {
   accent: 'orange' | 'cobalt';
 }
 
+export interface SocialLink {
+  id: 'instagram' | 'linkedin' | 'facebook';
+  platform: string;
+  handle: string;
+  url: string;
+}
+
+export interface FooterConfig {
+  tagline: string;
+  chapterLocation: string;
+  officialSocials: SocialLink[];
+  developerAttributionLabel: string;
+  developerLinkedInUrl: string | null;
+}
+
 export interface SiteData {
   brand: {
     society: string;
@@ -79,6 +94,7 @@ export interface SiteData {
     }[];
   };
   navigation: NavItem[];
+  footer: FooterConfig;
 }
 
 export interface ProjectItem {
@@ -161,7 +177,8 @@ export interface EventItem {
 export interface TeamMember {
   id: string;
   slotCode: string;
-  tier: 'executive' | 'coders-club-leadership' | 'lead' | 'member';
+  roleRank: 'head' | 'co-head-1' | 'co-head-2';
+  isPrimaryHead: boolean;
   fullName: string;
   position: string;
   departmentUnit: string;

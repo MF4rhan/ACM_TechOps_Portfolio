@@ -1,61 +1,84 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
+type RevealPhase = 'visible' | 'hidden';
+
+/**
+ * Progressive-enhancement scroll reveal hook.
+ * Content remains visible by default if reduced motion is preferred,
+ * on tall capture viewports, or once scrolled past/into view.
+ */
 export function useScrollReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [phase, setPhase] = useState<RevealPhase>('visible');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = ref.current;
     if (!element) {
       return;
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
-      setIsVisible(true);
+    if (
+      prefersReducedMotion ||
+      typeof IntersectionObserver === 'undefined' ||
+      window.innerHeight >= 2200
+    ) {
+      setPhase('visible');
       return;
     }
 
-    const checkPosition = () => {
+    const isInOrAboveViewport = () => {
       const rect = element.getBoundingClientRect();
-      if (rect.top <= window.innerHeight + 120) {
-        setIsVisible(true);
-        return true;
-      }
-      return false;
+      return rect.top <= window.innerHeight - 24 || rect.bottom <= window.innerHeight;
     };
 
-    if (checkPosition()) {
+    if (isInOrAboveViewport()) {
+      setPhase('visible');
       return;
     }
+
+    setPhase('hidden');
+
+    const reveal = () => {
+      setPhase('visible');
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting || checkPosition()) {
-            setIsVisible(true);
-            observer.unobserve(entry.target);
+          if (entry.isIntersecting || isInOrAboveViewport()) {
+            reveal();
+            observer.disconnect();
           }
         });
       },
-      { threshold: 0, rootMargin: '120px 0px 120px 0px' }
+      { threshold: 0.04, rootMargin: '0px 0px -24px 0px' }
     );
 
     observer.observe(element);
-    const onScrollOrHash = () => {
-      if (checkPosition()) {
+
+    const onScrollOrNav = () => {
+      if (isInOrAboveViewport()) {
+        reveal();
         observer.disconnect();
       }
     };
-    window.addEventListener('scroll', onScrollOrHash, { passive: true });
-    window.addEventListener('hashchange', onScrollOrHash);
+
+    window.addEventListener('scroll', onScrollOrNav, { passive: true });
+    window.addEventListener('hashchange', onScrollOrNav);
+    window.addEventListener('resize', onScrollOrNav, { passive: true });
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', onScrollOrHash);
-      window.removeEventListener('hashchange', onScrollOrHash);
+      window.removeEventListener('scroll', onScrollOrNav);
+      window.removeEventListener('hashchange', onScrollOrNav);
+      window.removeEventListener('resize', onScrollOrNav);
     };
   }, []);
 
-  return { ref, isVisible };
+  return {
+    ref,
+    isVisible: phase === 'visible',
+    revealClassName: phase === 'visible' ? 'reveal is-visible' : 'reveal reveal--hidden',
+  };
 }

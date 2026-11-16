@@ -60,8 +60,8 @@ export const siteData: SiteData = {
       },
       {
         code: 'IDX-04',
-        title: 'Head & Co-Head Roster',
-        subtitle: 'Official leadership structure & role slots',
+        title: 'Executive Leadership',
+        subtitle: 'One TechOps Head & two Co-Heads',
         targetId: 'team',
         accent: 'cobalt',
       },
@@ -215,5 +215,32 @@ export const siteData: SiteData = {
         detail: 'Recording verified outcomes, photographs, and technical documentation once reviewed by organizers.',
       },
     ],
+  },
+  footer: {
+    tagline:
+      'Technical operations, infrastructure and student-led innovation behind the ACM FAST experience.',
+    chapterLocation: 'FAST NUCES KARACHI CHAPTER · PORTFOLIO ARCHIVE',
+    officialSocials: [
+      {
+        id: 'instagram',
+        platform: 'INSTAGRAM',
+        handle: '@acmnuceskhi',
+        url: 'https://www.instagram.com/acmnuceskhi/',
+      },
+      {
+        id: 'linkedin',
+        platform: 'LINKEDIN',
+        handle: '/company/acmnuceskhi',
+        url: 'https://www.linkedin.com/company/acmnuceskhi/',
+      },
+      {
+        id: 'facebook',
+        platform: 'FACEBOOK',
+        handle: '/acmnuceskhi',
+        url: 'https://www.facebook.com/acmnuceskhi/',
+      },
+    ],
+    developerAttributionLabel: 'DESIGNED & ENGINEERED BY MUHAMMAD FARHAN',
+    developerLinkedInUrl: 'https://www.linkedin.com/in/muhammad-farhan-cs/',
   },
 };

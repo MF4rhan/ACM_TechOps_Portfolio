@@ -2,14 +2,15 @@ import type { ContactData } from '../types/portfolio';
 
 /**
  * CONTACT & JOIN ACM DATA
- * Do not invent email addresses, phone numbers, or social URLs.
- * Keep `url: null` until an approved official URL is provided by ACM FAST organizers.
+ * Do not invent email addresses, phone numbers, or unverified URLs.
+ * Verified ACM FAST-NUCES Karachi social URLs are active below;
+ * remaining official URLs keep `url: null` until confirmed.
  */
 export const contactData: ContactData = {
   sectionCode: 'SEC-07 // OFFICIAL CHANNELS & INVOLVEMENT',
   title: 'Connect & Join ACM FAST TechOps',
   subtitle:
-    'Official ACM FAST NUCES Karachi digital channels and contact links will be activated here once supplied by the society leadership.',
+    'Follow verified ACM FAST NUCES Karachi social channels below. Additional official website, email, and GitHub links will be activated once supplied by society leadership.',
   joinCalloutTitle: 'Interested in Technical Operations or Coders Club?',
   joinCalloutBody:
     'Students at FAST NUCES Karachi looking to gain hands-on experience in live event technology, general IT coordination, interactive activity engineering, or peer-led coding education through Coders Club can connect during official ACM FAST recruitment drives.',
@@ -21,12 +22,39 @@ export const contactData: ContactData = {
   },
   channels: [
     {
+      id: 'ch-instagram',
+      label: 'Official Instagram',
+      channelType: 'Instagram',
+      displayValue: '@acmnuceskhi',
+      url: 'https://www.instagram.com/acmnuceskhi/',
+      statusNote: 'Verified Official Channel',
+      isPlaceholder: false,
+    },
+    {
+      id: 'ch-linkedin',
+      label: 'Official LinkedIn',
+      channelType: 'LinkedIn',
+      displayValue: 'ACM NUCES Karachi (/company/acmnuceskhi)',
+      url: 'https://www.linkedin.com/company/acmnuceskhi/',
+      statusNote: 'Verified Official Channel',
+      isPlaceholder: false,
+    },
+    {
+      id: 'ch-facebook',
+      label: 'Official Facebook',
+      channelType: 'Website',
+      displayValue: 'ACM NUCES Karachi (/acmnuceskhi)',
+      url: 'https://www.facebook.com/acmnuceskhi/',
+      statusNote: 'Verified Official Channel',
+      isPlaceholder: false,
+    },
+    {
       id: 'ch-website',
       label: 'Official ACM FAST Website',
       channelType: 'Website',
       displayValue: 'Official website URL pending confirmation',
       url: null,
-      statusNote: 'Set url in src/data/contact.ts when supplied',
+      statusNote: 'Pending Confirmation',
       isPlaceholder: true,
     },
     {
@@ -35,7 +63,7 @@ export const contactData: ContactData = {
       channelType: 'Email',
       displayValue: 'Official email address to be confirmed',
       url: null,
-      statusNote: 'Awaiting approved contact email',
+      statusNote: 'Pending Confirmation',
       isPlaceholder: true,
     },
     {
@@ -44,25 +72,7 @@ export const contactData: ContactData = {
       channelType: 'GitHub',
       displayValue: 'Official GitHub organization link pending',
       url: null,
-      statusNote: 'Awaiting approved repository organization URL',
-      isPlaceholder: true,
-    },
-    {
-      id: 'ch-instagram',
-      label: 'Official Instagram',
-      channelType: 'Instagram',
-      displayValue: 'Official social handle to be confirmed',
-      url: null,
-      statusNote: 'Awaiting verified social media URL',
-      isPlaceholder: true,
-    },
-    {
-      id: 'ch-linkedin',
-      label: 'Official LinkedIn',
-      channelType: 'LinkedIn',
-      displayValue: 'Official LinkedIn page to be confirmed',
-      url: null,
-      statusNote: 'Awaiting verified LinkedIn URL',
+      statusNote: 'Pending Confirmation',
       isPlaceholder: true,
     },
   ],

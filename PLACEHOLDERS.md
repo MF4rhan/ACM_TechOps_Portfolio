@@ -39,10 +39,9 @@ Per project guidelines and the SRS, **no names, dates, roll numbers, statistics,
 ---
 
 ## 5. Team & Leadership (`src/data/team.ts`, `public/images/team/`)
-- [ ] **TechOps Head**: Full name, FAST-NUCES roll number, official responsibilities refinement, and approved photograph (`portrait-head.svg`).
-- [ ] **TechOps Co-Head**: Full name, FAST-NUCES roll number, official responsibilities refinement, and approved photograph (`portrait-cohead.svg`).
-- [ ] **Coders Club Leadership Structure**: Confirm whether Coders Club has its own separate Head / Co-Head titles, names, and roll numbers (`CC-LEAD-01`).
-- [ ] **Additional Approved Domain Leads & Core Members**: Confirm approved lead titles, names, roll numbers, and portraits (`portrait-lead.svg`, `portrait-member.svg`).
+- [ ] **TechOps Head (`EXEC-01`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-head.svg`).
+- [ ] **TechOps Co-Head 01 (`EXEC-02`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-cohead.svg`).
+- [ ] **TechOps Co-Head 02 (`EXEC-03`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-cohead-02.svg`).
 
 ---
 
@@ -53,10 +52,9 @@ Per project guidelines and the SRS, **no names, dates, roll numbers, statistics,
 
 ---
 
-## 7. Contact, Social Media & Recruitment (`src/data/contact.ts`)
+## 7. Contact, Social Media & Recruitment (`src/data/contact.ts`, `src/data/site.ts`)
 - [ ] **Official ACM FAST Website URL**: Currently `null`.
 - [ ] **Official Department / Society Email Address**: Currently `null`.
 - [ ] **Official GitHub Organization URL**: Currently `null`.
-- [ ] **Official Instagram Handle / URL**: Currently `null`.
-- [ ] **Official LinkedIn Page URL**: Currently `null`.
 - [ ] **Recruitment / Induction Dates**: Confirm exact induction window for `campusLocation.officeNote`.
+- *Verified & Active*: Official ACM NUCES Karachi Instagram (`@acmnuceskhi`), LinkedIn (`/company/acmnuceskhi`), Facebook (`/acmnuceskhi`), and Developer LinkedIn attribution (`muhammad-farhan-cs`).

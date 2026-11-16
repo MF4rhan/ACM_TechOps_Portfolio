@@ -200,8 +200,20 @@ ol {
     transform var(--duration-fast) var(--ease-editorial);
 }
 
+.btn svg {
+  transition: transform var(--duration-fast) var(--ease-editorial);
+}
+
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn:hover svg:last-child {
+  transform: translate(2px, -1px);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn--primary {
@@ -286,11 +298,81 @@ ol {
   border-color: rgba(124, 146, 255, 0.45);
 }
 
-/* Scroll Reveal (progressive motion without hiding content) */
+/* Choreography & Keyframes */
+@keyframes heroRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFilterEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes schematicFlow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes nodePulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  70% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+}
+
+@keyframes schematicPanelFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-anim {
+  animation: heroRevealUp 440ms var(--ease-editorial) both;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+/* Scroll Reveal & Staggered Grid Entrances */
 .reveal {
   opacity: 1;
-  transform: translateY(10px);
-  transition: transform 320ms var(--ease-editorial);
+  transform: translateY(0);
+  transition:
+    opacity 540ms var(--ease-editorial),
+    transform 540ms var(--ease-editorial);
+}
+
+.reveal--hidden {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .reveal.is-visible {
@@ -298,15 +380,54 @@ ol {
   transform: translateY(0);
 }
 
+.reveal .stagger-item {
+  transition:
+    opacity 500ms var(--ease-editorial),
+    transform 500ms var(--ease-editorial),
+    border-color var(--duration-fast) var(--ease-editorial),
+    background-color var(--duration-fast) var(--ease-editorial);
+  transition-delay:
+    calc(var(--stagger-idx, 0) * 75ms),
+    calc(var(--stagger-idx, 0) * 75ms),
+    0ms,
+    0ms;
+}
+
+.reveal--hidden .stagger-item {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal.is-visible .stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.is-visible .stagger-item:hover {
+  transition-delay: 0ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .hero-anim,
+  .reveal,
+  .reveal--hidden,
+  .reveal--hidden .stagger-item,
+  .reveal .stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .schematic__flow-line,
+  .schematic__pulse-ring,
+  .schematic__live::before,
+  .schematic__detail--animated {
+    animation: none !important;
   }
 
   .btn,

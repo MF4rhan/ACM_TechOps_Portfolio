@@ -1,24 +1,29 @@
+import type { CSSProperties } from 'react';
 import type { TeamMember } from '../types/portfolio';
 
 interface TeamCardProps {
   member: TeamMember;
+  index: number;
 }
 
-export function TeamCard({ member }: TeamCardProps) {
-  const isExecutive = member.tier === 'executive';
-  const isCodersLeadership = member.tier === 'coders-club-leadership';
-
-  const cardClasses = [
-    'team-card',
-    isExecutive ? 'team-card--exec' : '',
-    isCodersLeadership ? 'team-card--coders' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
+export function TeamCard({ member, index }: TeamCardProps) {
+  const rankClass =
+    member.roleRank === 'head'
+      ? 'team-card--head'
+      : member.roleRank === 'co-head-1'
+        ? 'team-card--cohead-left'
+        : 'team-card--cohead-right';
 
   return (
-    <article className={cardClasses}>
-      <div className="team-card__photo">
+    <article
+      className={`team-card ${rankClass} stagger-item`}
+      style={{ '--stagger-idx': index } as CSSProperties}
+    >
+      <div
+        className={`team-card__photo ${
+          member.isPlaceholder ? 'team-card__photo--placeholder' : ''
+        }`}
+      >
         <img
           src={member.photoUrl}
           alt={member.photoAlt}
@@ -31,7 +36,10 @@ export function TeamCard({ member }: TeamCardProps) {
 
       <div className="team-card__body">
         <div className="team-card__slot">
-          <span>{member.slotCode}</span>
+          <span>
+            {member.slotCode}
+            {member.isPrimaryHead ? ' · PRIMARY LEAD' : ''}
+          </span>
           <span>{member.departmentUnit}</span>
         </div>
 

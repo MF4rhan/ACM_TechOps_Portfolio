@@ -1,9 +1,10 @@
+import type { CSSProperties } from 'react';
 import { achievementsData, achievementsIntro } from '../data/achievements';
 import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function AchievementsSection() {
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -11,7 +12,7 @@ export function AchievementsSection() {
       aria-labelledby="achievements-heading"
       className="section section--light grid-backdrop-light"
     >
-      <div ref={ref} className={`container reveal ${isVisible ? 'is-visible' : ''}`}>
+      <div ref={ref} className={`container ${revealClassName}`}>
         <SectionHeader
           sectionCode={achievementsIntro.sectionCode}
           title={achievementsIntro.title}
@@ -20,19 +21,20 @@ export function AchievementsSection() {
           tag="NO FABRICATED METRICS"
         />
 
-        <div className="ledger-banner" role="note">
+        <div className="ledger-banner stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties} role="note">
           {achievementsIntro.policyBanner}
         </div>
 
         <div className="achievements-grid">
-          {achievementsData.map((item) => {
+          {achievementsData.map((item, idx) => {
             const isVerified = item.verificationStatus === 'Verified Scope';
             return (
               <article
                 key={item.id}
                 className={`achievement-row ${
                   isVerified ? 'achievement-row--verified' : 'achievement-row--pending'
-                }`}
+                } stagger-item`}
+                style={{ '--stagger-idx': idx } as CSSProperties}
               >
                 <div className="achievement-row__top">
                   <span className="mono-label" style={{ color: 'var(--color-ink-subtle-light)' }}>

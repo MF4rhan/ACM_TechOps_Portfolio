@@ -27,23 +27,56 @@ export function App() {
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (elements.length === 0 || typeof IntersectionObserver === 'undefined') {
+    if (elements.length === 0) {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSectionId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
-    );
+    let rafId = 0;
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const updateActiveSection = () => {
+      rafId = 0;
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (scrollBottom >= docHeight - 12) {
+        setActiveSectionId(elements[elements.length - 1].id);
+        return;
+      }
+
+      const probeY = 72 + Math.min(window.innerHeight * 0.28, 220);
+      let currentId = elements[0].id;
+
+      for (const el of elements) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= probeY) {
+          currentId = el.id;
+        } else {
+          break;
+        }
+      }
+
+      setActiveSectionId((prev) => (prev === currentId ? prev : currentId));
+    };
+
+    const onScrollOrResize = () => {
+      if (rafId === 0) {
+        rafId = window.requestAnimationFrame(updateActiveSection);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+    window.addEventListener('hashchange', updateActiveSection);
+
+    return () => {
+      if (rafId !== 0) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
+      window.removeEventListener('hashchange', updateActiveSection);
+    };
   }, []);
 
   return (

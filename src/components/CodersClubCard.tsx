@@ -1,13 +1,18 @@
+import type { CSSProperties } from 'react';
 import { ExternalLink } from 'lucide-react';
 import type { CodersClubContribution } from '../types/portfolio';
 
 interface CodersClubCardProps {
   contribution: CodersClubContribution;
+  index: number;
 }
 
-export function CodersClubCard({ contribution }: CodersClubCardProps) {
+export function CodersClubCard({ contribution, index }: CodersClubCardProps) {
   return (
-    <article className="cc-card">
+    <article
+      className="cc-card stagger-item"
+      style={{ '--stagger-idx': index } as CSSProperties}
+    >
       <div
         className={`cc-card__poster ${
           contribution.isPlaceholder ? 'cc-card__poster--blueprint' : ''

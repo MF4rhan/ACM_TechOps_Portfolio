@@ -1,14 +1,20 @@
+import type { CSSProperties } from 'react';
 import { Maximize2, ExternalLink } from 'lucide-react';
 import type { EventItem } from '../types/portfolio';
 
 interface EventCardProps {
   event: EventItem;
+  index: number;
+  animateFilter?: boolean;
   onInspect: (event: EventItem) => void;
 }
 
-export function EventCard({ event, onInspect }: EventCardProps) {
+export function EventCard({ event, index, animateFilter = false, onInspect }: EventCardProps) {
   return (
-    <article className="event-card">
+    <article
+      className={`event-card ${animateFilter ? 'filter-card-enter' : 'stagger-item'}`}
+      style={{ '--stagger-idx': index } as CSSProperties}
+    >
       <div className="event-card__media">
         <img
           src={event.imageUrl}

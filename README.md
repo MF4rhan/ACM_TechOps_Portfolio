@@ -150,12 +150,12 @@ Each item in `projectsData` follows the `ProjectItem` interface (`src/types/port
 
 ## 11. How to Update Team Details and Roll Numbers
 
-Team and leadership records are stored in `src/data/team.ts`.
+Executive leadership records are stored in `src/data/team.ts` (`EXEC-01` TechOps Head, `EXEC-02` TechOps Co-Head 01, and `EXEC-03` TechOps Co-Head 02).
 
-1. Place approved portrait images in `public/images/team/`.
-2. Update the `executive` tier entries (`role-techops-head` and `role-techops-cohead`) with the confirmed `fullName`, `rollNumber`, `responsibilities`, `photoUrl`, and `photoAlt`.
-3. Update or expand the `coders-club-leadership`, `lead`, and `member` entries according to the official structure confirmed by ACM FAST.
-4. Set `isPlaceholder: false` on confirmed entries.
+1. Place approved portrait images in `public/images/team/` (`portrait-head.svg`, `portrait-cohead.svg`, `portrait-cohead-02.svg` or raster `.webp`/`.jpg` replacements).
+2. Update the three entries (`role-techops-head`, `role-techops-cohead-01`, `role-techops-cohead-02`) with confirmed `fullName`, `rollNumber`, `responsibilities`, `photoUrl`, and `photoAlt`.
+3. Set `isPlaceholder: false` on confirmed entries.
+4. Footer social URLs and developer LinkedIn attribution (`developerLinkedInUrl`) are configured in `src/data/site.ts`.
 
 ---
 

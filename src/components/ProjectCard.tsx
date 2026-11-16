@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { ChevronDown, ChevronUp, ExternalLink, GitBranch } from 'lucide-react';
 import type { ProjectItem } from '../types/portfolio';
 
 interface ProjectCardProps {
   project: ProjectItem;
+  index: number;
+  animateFilter?: boolean;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, index, animateFilter = false }: ProjectCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <article className="project-dossier">
+    <article
+      className={`project-dossier ${animateFilter ? 'filter-card-enter' : 'stagger-item'}`}
+      style={{ '--stagger-idx': index } as CSSProperties}
+    >
       <div
         className={`project-dossier__media ${
           project.isPlaceholder ? 'project-dossier__media--blueprint' : ''

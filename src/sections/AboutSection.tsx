@@ -1,10 +1,11 @@
+import type { CSSProperties } from 'react';
 import { siteData } from '../data/site';
 import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function AboutSection() {
   const { about } = siteData;
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -12,7 +13,7 @@ export function AboutSection() {
       aria-labelledby="about-heading"
       className="section section--light grid-backdrop-light"
     >
-      <div ref={ref} className={`container reveal ${isVisible ? 'is-visible' : ''}`}>
+      <div ref={ref} className={`container ${revealClassName}`}>
         <SectionHeader
           sectionCode={about.sectionCode}
           title={about.title}
@@ -21,7 +22,7 @@ export function AboutSection() {
           tag="VERIFIED MANDATE & WORKFLOW"
         />
 
-        <div className="about-editorial">
+        <div className="about-editorial stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
           <div className="about-editorial__prose">
             <h3 className="about-editorial__heading">{about.overviewHeading}</h3>
             {about.overviewBody.map((paragraph) => (
@@ -40,8 +41,12 @@ export function AboutSection() {
         </div>
 
         <div className="about-pillars">
-          {about.pillars.map((pillar) => (
-            <article key={pillar.index} className="pillar-cell">
+          {about.pillars.map((pillar, idx) => (
+            <article
+              key={pillar.index}
+              className="pillar-cell stagger-item"
+              style={{ '--stagger-idx': idx } as CSSProperties}
+            >
               <div className="pillar-cell__head">
                 <span className="pillar-cell__index">{pillar.index}</span>
                 <span className="pillar-cell__scope">{pillar.scope}</span>
@@ -58,8 +63,12 @@ export function AboutSection() {
         </div>
 
         <div className="workflow-strip" aria-label="Operational execution phases">
-          {about.workflowSteps.map((step) => (
-            <div key={step.step} className="workflow-step">
+          {about.workflowSteps.map((step, idx) => (
+            <div
+              key={step.step}
+              className="workflow-step stagger-item"
+              style={{ '--stagger-idx': idx } as CSSProperties}
+            >
               <span className="workflow-step__code">{step.step}</span>
               <h4 className="workflow-step__title">{step.phase}</h4>
               <p className="workflow-step__detail">{step.detail}</p>
