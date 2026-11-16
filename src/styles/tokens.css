@@ -1,0 +1,68 @@
+:root {
+  /* Core Brand Palette */
+  --color-graphite: #111316;
+  --color-graphite-elevated: #171a1f;
+  --color-graphite-subtle: #1e222a;
+
+  --color-paper: #f2f0e9;
+  --color-paper-elevated: #eae6dc;
+  --color-paper-subtle: #e0dbd0;
+
+  --color-orange: #f25a38;
+  --color-orange-hover: #df4927;
+  --color-orange-soft: rgba(242, 90, 56, 0.14);
+
+  --color-cobalt: #344fc5;
+  --color-cobalt-deep: #18255d;
+  --color-cobalt-ink: #121c47;
+  --color-cobalt-light: #7c92ff;
+  --color-cobalt-soft: rgba(52, 79, 197, 0.14);
+
+  /* Supporting Neutral Tones */
+  --color-ink-muted-dark: #a6aab3;
+  --color-ink-subtle-dark: #787d87;
+  --color-ink-muted-light: #4b4f58;
+  --color-ink-subtle-light: #6d727c;
+
+  /* Editorial Hairline Borders */
+  --border-dark: rgba(242, 240, 233, 0.14);
+  --border-dark-strong: rgba(242, 240, 233, 0.28);
+  --border-light: rgba(17, 19, 22, 0.15);
+  --border-light-strong: rgba(17, 19, 22, 0.3);
+  --border-cobalt: rgba(242, 240, 233, 0.2);
+
+  /* Typography Families */
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.5rem, 2.2vw, 2rem);
+  --text-3xl: clamp(1.9rem, 3.6vw, 3rem);
+  --text-4xl: clamp(2.5rem, 5.2vw, 4.75rem);
+  --text-hero: clamp(2.45rem, 6vw, 5.4rem);
+
+  /* Layout & Spacing */
+  --max-width: 1380px;
+  --nav-height: 72px;
+  --gutter: clamp(1.25rem, 3.5vw, 3rem);
+  --section-pad-y: clamp(4.5rem, 8vw, 7.5rem);
+
+  /* Sharp Architectural Radii */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 600ms;
+}

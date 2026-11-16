@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+  <rect width="800" height="480" fill="#111316" />
+  <g stroke="#F2F0E9" stroke-opacity="0.07" stroke-width="1">
+    <path d="M0 60H800M0 120H800M0 180H800M0 240H800M0 300H800M0 360H800M0 420H800" />
+    <path d="M80 0V480M160 0V480M240 0V480M320 0V480M400 0V480M480 0V480M560 0V480M640 0V480M720 0V480" />
+  </g>
+  <rect x="48" y="48" width="704" height="384" stroke="#F2F0E9" stroke-opacity="0.2" stroke-width="1.2" />
+  <rect x="110" y="120" width="580" height="210" fill="#171A1F" stroke="#F2F0E9" stroke-opacity="0.25" />
+  <path d="M110 172H690M110 224H690M110 276H690" stroke="#F2F0E9" stroke-opacity="0.12" />
+  <path d="M290 120V330M500 120V330" stroke="#F2F0E9" stroke-opacity="0.12" />
+  <rect x="130" y="136" width="120" height="20" fill="#F25A38" fill-opacity="0.3" />
+  <rect x="310" y="188" width="160" height="20" fill="#344FC5" fill-opacity="0.4" />
+  <rect x="520" y="240" width="140" height="20" fill="#F2F0E9" fill-opacity="0.2" />
+  <text x="64" y="80" fill="#F2F0E9" fill-opacity="0.68" font-family="monospace" font-size="13" letter-spacing="2">SYSTEM BLUEPRINT 03 // SOCIETY INFRASTRUCTURE LEDGER</text>
+  <text x="96" y="388" fill="#F25A38" font-family="monospace" font-size="13" letter-spacing="1.5">[ PROJECT SCREENSHOT &amp; DETAILS TO BE CONFIRMED ]</text>
+</svg>

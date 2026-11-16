@@ -1,0 +1,72 @@
+import { siteData } from '../data/site';
+import { SectionHeader } from '../components/SectionHeader';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
+export function AboutSection() {
+  const { about } = siteData;
+  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+
+  return (
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="section section--light grid-backdrop-light"
+    >
+      <div ref={ref} className={`container reveal ${isVisible ? 'is-visible' : ''}`}>
+        <SectionHeader
+          sectionCode={about.sectionCode}
+          title={about.title}
+          subtitle={about.subtitle}
+          headingId="about-heading"
+          tag="VERIFIED MANDATE & WORKFLOW"
+        />
+
+        <div className="about-editorial">
+          <div className="about-editorial__prose">
+            <h3 className="about-editorial__heading">{about.overviewHeading}</h3>
+            {about.overviewBody.map((paragraph) => (
+              <p key={paragraph} className="about-editorial__body">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <aside className="about-protocol" aria-label={about.distinctionNote.label}>
+            <span className="about-protocol__label">{about.distinctionNote.label}</span>
+            <p style={{ fontSize: '0.94rem', color: 'var(--color-graphite)' }}>
+              {about.distinctionNote.text}
+            </p>
+          </aside>
+        </div>
+
+        <div className="about-pillars">
+          {about.pillars.map((pillar) => (
+            <article key={pillar.index} className="pillar-cell">
+              <div className="pillar-cell__head">
+                <span className="pillar-cell__index">{pillar.index}</span>
+                <span className="pillar-cell__scope">{pillar.scope}</span>
+              </div>
+              <h3 className="pillar-cell__title">{pillar.title}</h3>
+              <p className="pillar-cell__desc">{pillar.description}</p>
+              <ul className="pillar-cell__list">
+                {pillar.activities.map((activity) => (
+                  <li key={activity}>{activity}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div className="workflow-strip" aria-label="Operational execution phases">
+          {about.workflowSteps.map((step) => (
+            <div key={step.step} className="workflow-step">
+              <span className="workflow-step__code">{step.step}</span>
+              <h4 className="workflow-step__title">{step.phase}</h4>
+              <p className="workflow-step__detail">{step.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

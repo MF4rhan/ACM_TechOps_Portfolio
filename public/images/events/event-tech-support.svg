@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <rect width="800" height="520" fill="#171A1F" />
+  <g stroke="#F2F0E9" stroke-opacity="0.08" stroke-width="1">
+    <path d="M0 65H800M0 130H800M0 195H800M0 260H800M0 325H800M0 390H800M0 455H800" />
+    <path d="M100 0V520M200 0V520M300 0V520M400 0V520M500 0V520M600 0V520M700 0V520" />
+  </g>
+  <rect x="40" y="40" width="720" height="440" stroke="#F2F0E9" stroke-opacity="0.22" stroke-width="1.2" />
+  <path d="M40 96H760" stroke="#F2F0E9" stroke-opacity="0.16" stroke-width="1" />
+  <rect x="110" y="145" width="240" height="200" fill="#111316" stroke="#F2F0E9" stroke-opacity="0.3" stroke-width="1.2" />
+  <rect x="450" y="145" width="240" height="200" fill="#111316" stroke="#F2F0E9" stroke-opacity="0.3" stroke-width="1.2" />
+  <path d="M350 245H450" stroke="#F25A38" stroke-width="2" stroke-dasharray="6 4" />
+  <circle cx="400" cy="245" r="14" fill="#171A1F" stroke="#F25A38" stroke-width="2" />
+  <rect x="145" y="185" width="170" height="28" fill="#344FC5" fill-opacity="0.3" stroke="#5B73E8" />
+  <rect x="145" y="230" width="170" height="28" stroke="#F2F0E9" stroke-opacity="0.3" />
+  <rect x="145" y="275" width="170" height="28" stroke="#F2F0E9" stroke-opacity="0.3" />
+  <rect x="485" y="185" width="170" height="28" fill="#F25A38" fill-opacity="0.25" stroke="#F25A38" />
+  <rect x="485" y="230" width="170" height="28" stroke="#F2F0E9" stroke-opacity="0.3" />
+  <rect x="485" y="275" width="170" height="28" stroke="#F2F0E9" stroke-opacity="0.3" />
+  <text x="68" y="74" fill="#F2F0E9" fill-opacity="0.72" font-family="monospace" font-size="13" letter-spacing="2">PLATE 04 // GENERAL IT &amp; SOCIETY INFRASTRUCTURE</text>
+  <text x="70" y="425" fill="#F25A38" font-family="monospace" font-size="14" letter-spacing="1.5">[ OFFICIAL PHOTOGRAPH PENDING CONFIRMATION ]</text>
+  <text x="70" y="452" fill="#F2F0E9" fill-opacity="0.5" font-family="monospace" font-size="12">DROP REPLACEMENT ASSET IN: public/images/events/</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+  <rect width="800" height="480" fill="#111316" />
+  <g stroke="#F2F0E9" stroke-opacity="0.07" stroke-width="1">
+    <path d="M0 60H800M0 120H800M0 180H800M0 240H800M0 300H800M0 360H800M0 420H800" />
+    <path d="M80 0V480M160 0V480M240 0V480M320 0V480M400 0V480M480 0V480M560 0V480M640 0V480M720 0V480" />
+  </g>
+  <rect x="48" y="48" width="704" height="384" stroke="#F2F0E9" stroke-opacity="0.2" stroke-width="1.2" />
+  <rect x="96" y="108" width="380" height="220" fill="#171A1F" stroke="#F25A38" stroke-width="1.5" />
+  <path d="M96 148H476" stroke="#F2F0E9" stroke-opacity="0.18" />
+  <rect x="124" y="176" width="160" height="24" fill="#F25A38" fill-opacity="0.2" stroke="#F25A38" />
+  <rect x="124" y="216" width="320" height="16" fill="#F2F0E9" fill-opacity="0.12" />
+  <rect x="124" y="246" width="260" height="16" fill="#F2F0E9" fill-opacity="0.08" />
+  <rect x="124" y="276" width="200" height="16" fill="#F2F0E9" fill-opacity="0.08" />
+  <rect x="516" y="108" width="188" height="220" fill="#171A1F" stroke="#344FC5" stroke-width="1.5" />
+  <circle cx="610" cy="186" r="42" stroke="#5B73E8" stroke-width="1.5" />
+  <circle cx="610" cy="186" r="14" fill="#F25A38" />
+  <line x1="546" y1="260" x2="674" y2="260" stroke="#F2F0E9" stroke-opacity="0.25" stroke-width="1.5" />
+  <line x1="546" y1="286" x2="640" y2="286" stroke="#F2F0E9" stroke-opacity="0.18" stroke-width="1.5" />
+  <text x="64" y="80" fill="#F2F0E9" fill-opacity="0.68" font-family="monospace" font-size="13" letter-spacing="2">SYSTEM BLUEPRINT 01 // PROJECT DOCUMENTATION PENDING</text>
+  <text x="96" y="388" fill="#F25A38" font-family="monospace" font-size="13" letter-spacing="1.5">[ PROJECT SCREENSHOT &amp; DETAILS TO BE CONFIRMED ]</text>
+</svg>

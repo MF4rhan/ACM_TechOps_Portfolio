@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none">
+  <rect width="720" height="480" fill="#17245E" />
+  <rect x="28" y="28" width="664" height="424" stroke="#F2F0E9" stroke-opacity="0.28" stroke-width="1.2" />
+  <path d="M28 84H692" stroke="#F2F0E9" stroke-opacity="0.2" />
+  <path d="M120 330L230 220L330 270L450 155L600 190" stroke="#F25A38" stroke-width="3" />
+  <circle cx="120" cy="330" r="8" fill="#F2F0E9" />
+  <circle cx="230" cy="220" r="8" fill="#F2F0E9" />
+  <circle cx="330" cy="270" r="8" fill="#F25A38" />
+  <circle cx="450" cy="155" r="8" fill="#F2F0E9" />
+  <circle cx="600" cy="190" r="8" fill="#F25A38" />
+  <rect x="85" y="128" width="550" height="240" stroke="#F2F0E9" stroke-opacity="0.18" stroke-dasharray="4 4" />
+  <text x="54" y="62" fill="#F2F0E9" font-family="monospace" font-size="13" letter-spacing="2">CODERS CLUB // COMPETITIVE PROGRAMMING EDUCATION</text>
+  <text x="76" y="416" fill="#F2F0E9" fill-opacity="0.72" font-family="monospace" font-size="12">[ SESSION PHOTOGRAPH &amp; RECORD PENDING CONFIRMATION ]</text>
+</svg>
