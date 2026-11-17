@@ -1,60 +1,20 @@
-# Pending Content & Placeholder Inventory
+# Content Verification & Asset Status
 
-This document tracks all unverified or pending information that must still be supplied by ACM FAST NUCES Karachi organizers before replacing the placeholder entries in `src/data/` and `public/images/`.
+Following the content simplification and real photography integration pass, placeholder blocks and unverified metric tables have been removed from the public site.
 
-Per project guidelines and the SRS, **no names, dates, roll numbers, statistics, project deliverables, or contact links have been invented**.
+## Integrated Verified Assets
+- **Leadership Portraits (`public/images/team/`)**:
+  - `uzair-mustafa-head.jpg` — **Uzair Mustafa**, TechOps Head (`EXEC-01`)
+  - `ahsan-abbasi-cohead.jpg` — **Ahsan Abbasi**, TechOps Co-Head (`EXEC-02`)
+  - `muhammad-fareed-cohead.jpg` — **Muhammad Fareed**, TechOps Co-Head (`EXEC-03`)
+- **Activity Photography (`public/images/events/`)**:
+  - `interactive-minigames.jpg` — ACM NUCES 2026–27 Introductory Session Interactive Minigames outside the auditorium (`ACT-02` & Closing Photographic Plate)
+- **Official Channels (`src/data/site.ts`, `src/data/contact.ts`)**:
+  - Instagram: `https://www.instagram.com/acmnuceskhi/`
+  - LinkedIn: `https://www.linkedin.com/company/acmnuceskhi/`
+  - Facebook: `https://www.facebook.com/acmnuceskhi/`
+  - Developer Attribution LinkedIn: `https://www.linkedin.com/in/muhammad-farhan-cs/`
 
----
-
-## 1. General Identity & Branding (`src/components/Navbar.tsx`, `public/favicon.svg`)
-- [ ] **Official ACM FAST / TechOps Logo Asset**: Currently using a deliberate architectural typographic identity (`ACM FAST // TECHOPS DEPARTMENT`). Replace if an official vector logo is supplied.
-- [ ] **Academic Term / Cycle Label** (`src/data/site.ts`): Confirm exact tenure / academic year label.
-
----
-
-## 2. Projects & Technical Work (`src/data/projects.ts`, `public/images/projects/`)
-- [ ] **Confirmed Project Names & Descriptions**: All 3 project slots (`PRJ-01` to `PRJ-03`) currently display `"Details to be confirmed"`.
-- [ ] **Dates / Years & Tech Stacks**: Exact build dates, frameworks, and tools used.
-- [ ] **TechOps Specific Contribution & Verified Outcomes**: Confirm which completed systems or tools TechOps built or maintained.
-- [ ] **Project Screenshots**: Replace placeholder SVG blueprints (`project-blueprint-01.svg` – `03.svg`).
-- [ ] **GitHub Repository / Live URLs**: Currently `null` (`GitHub Link Pending`). Add verified links only after approval.
-- *Note*: Per factual guidelines, no claim regarding the current year's Coders Cup scoreboard is included.
-
----
-
-## 3. Coders Club Contributions (`src/data/codersClub.ts`, `public/images/coders-club/`)
-- [ ] **Specific Workshop & Coding Session Titles**: Current archive entries (`CC-01` to `CC-03`) describe verified focus areas while marking specific historical sessions as pending confirmation.
-- [ ] **Exact Dates / Periods**: Supply confirmed session dates or semester periods.
-- [ ] **Coders Club Posters & Session Photographs**: Replace placeholder SVG plates (`cc-workshops.svg`, `cc-competitive.svg`, `cc-sessions.svg`).
-- [ ] **Approved Evidence Links**: Supply slide decks, repository links, or official event recaps (`evidenceUrl`).
-
----
-
-## 4. Events & Activities Gallery (`src/data/events.ts`, `public/images/events/`)
-- [ ] **Official Event Names & Dates**: Exact names and dates for introductory sessions, auditorium foyer minigame days, and technical workshops.
-- [ ] **Exact Campus Venues / Rooms**: Confirm auditorium, seminar hall, or lab room details.
-- [ ] **Official Event Photographs & Posters**: Replace placeholder plates (`event-intro-session.svg`, `event-minigames.svg`, `event-workshop-support.svg`, `event-tech-support.svg`).
-- [ ] **Event Post Links**: Supply verified social or registration links (`externalUrl`) where applicable.
-
----
-
-## 5. Team & Leadership (`src/data/team.ts`, `public/images/team/`)
-- [ ] **TechOps Head (`EXEC-01`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-head.svg`).
-- [ ] **TechOps Co-Head 01 (`EXEC-02`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-cohead.svg`).
-- [ ] **TechOps Co-Head 02 (`EXEC-03`)**: Full name, FAST-NUCES roll number, and approved portrait (`portrait-cohead-02.svg`).
-
----
-
-## 6. Achievements & Verified Impact (`src/data/achievements.ts`)
-- [ ] **Total Workshops & Sessions Supported (`STAT-01`)**: Exact verified count.
-- [ ] **Student Participation / Reach (`STAT-02`)**: Verified attendance records (no estimates).
-- [ ] **Completed Deliverables & Milestones (`STAT-03`)**: Approved list of milestones and quantitative evidence.
-
----
-
-## 7. Contact, Social Media & Recruitment (`src/data/contact.ts`, `src/data/site.ts`)
-- [ ] **Official ACM FAST Website URL**: Currently `null`.
-- [ ] **Official Department / Society Email Address**: Currently `null`.
-- [ ] **Official GitHub Organization URL**: Currently `null`.
-- [ ] **Recruitment / Induction Dates**: Confirm exact induction window for `campusLocation.officeNote`.
-- *Verified & Active*: Official ACM NUCES Karachi Instagram (`@acmnuceskhi`), LinkedIn (`/company/acmnuceskhi`), Facebook (`/acmnuceskhi`), and Developer LinkedIn attribution (`muhammad-farhan-cs`).
+## Optional Future Additions (Not Required for Launch)
+- **Student Roll Numbers (`src/data/team.ts`)**: `rollNumber` is supported as an optional field on `TeamMember` and omitted visually unless explicitly supplied by leadership.
+- **Official Vector Logo (`src/components/Navbar.tsx`)**: Currently uses a clean architectural typographic mark (`ACM FAST // TECHOPS DEPARTMENT`); swap `.navbar__mark` if an official chapter vector asset is supplied.

@@ -49,12 +49,6 @@ export function ContactSection() {
                 <div style={{ color: 'var(--color-ink-muted-dark)' }}>
                   {contactData.campusLocation.campus} · {contactData.campusLocation.city}
                 </div>
-                <div
-                  className="mono-label"
-                  style={{ color: 'var(--color-orange)', marginTop: '0.35rem' }}
-                >
-                  {contactData.campusLocation.officeNote}
-                </div>
               </div>
             </div>
 
@@ -71,7 +65,7 @@ export function ContactSection() {
 
           <div className="stagger-item" style={{ '--stagger-idx': 1 } as CSSProperties}>
             <div className="mono-label" style={{ color: 'var(--color-ink-muted-dark)', marginBottom: '0.85rem' }}>
-              OFFICIAL CHANNELS & VERIFICATION STATUS
+              OFFICIAL ACM FAST CHANNELS
             </div>
 
             <div className="contact-channels">
@@ -84,21 +78,15 @@ export function ContactSection() {
                     <span className="channel-row__value">{channel.displayValue}</span>
                   </div>
 
-                  {channel.url ? (
-                    <a
-                      href={channel.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="channel-row__link"
-                    >
-                      <span>Open Channel</span>
-                      <ExternalLink size={13} aria-hidden="true" />
-                    </a>
-                  ) : (
-                    <span className="status-chip status-chip--pending-dark">
-                      {channel.statusNote}
-                    </span>
-                  )}
+                  <a
+                    href={channel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="channel-row__link"
+                  >
+                    <span>Open Channel</span>
+                    <ExternalLink size={13} aria-hidden="true" />
+                  </a>
                 </div>
               ))}
             </div>

@@ -57,7 +57,6 @@ export interface SiteData {
     shortCode: string;
     academicCycle: string;
     statusLabel: string;
-    logoAssetNote: string;
   };
   hero: {
     eyebrow: string;
@@ -97,44 +96,10 @@ export interface SiteData {
   footer: FooterConfig;
 }
 
-export interface ProjectItem {
-  id: string;
+export interface CodersClubTheme {
   code: string;
   name: string;
-  category: 'Infrastructure' | 'Event Systems' | 'Society Tooling' | 'Documentation';
-  status: 'Confirmed' | 'Pending Confirmation';
-  dateOrYear: string;
-  purpose: string;
   description: string;
-  techOpsContribution: string;
-  technologies: string[];
-  outcome: string;
-  screenshotUrl: string;
-  screenshotAlt: string;
-  repositoryUrl: string | null;
-  liveUrl: string | null;
-  isPlaceholder: boolean;
-}
-
-export interface CodersClubContribution {
-  id: string;
-  code: string;
-  track:
-    | 'Workshops'
-    | 'Coding Sessions'
-    | 'Competitive Programming'
-    | 'Practical Skills'
-    | 'Educational Initiatives';
-  title: string;
-  period: string;
-  status: 'Standing Mandate' | 'Confirmed Record' | 'Details Pending';
-  purpose: string;
-  codersClubRole: string;
-  communityBenefit: string;
-  posterUrl: string;
-  posterAlt: string;
-  evidenceUrl: string | null;
-  isPlaceholder: boolean;
 }
 
 export interface CodersClubData {
@@ -142,16 +107,12 @@ export interface CodersClubData {
   title: string;
   subtitle: string;
   mandateStatement: string;
+  supportingCopy: string;
   attributionNotice: {
     label: string;
     description: string;
   };
-  focusTracks: {
-    code: string;
-    name: string;
-    description: string;
-  }[];
-  contributions: CodersClubContribution[];
+  learningThemes: CodersClubTheme[];
 }
 
 export interface EventItem {
@@ -163,15 +124,19 @@ export interface EventItem {
     | 'Workshops'
     | 'Technical Operations';
   name: string;
-  date: string;
-  location: string;
+  scopeLabel: string;
   shortDescription: string;
-  techOpsInvolvement: string;
+  visualType: 'photo' | 'schematic-intro' | 'schematic-workshop' | 'schematic-ops';
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
+export interface EventsClosingPlate {
+  captionCode: string;
+  title: string;
+  description: string;
   imageUrl: string;
   imageAlt: string;
-  posterStatus: string;
-  externalUrl: string | null;
-  isPlaceholder: boolean;
 }
 
 export interface TeamMember {
@@ -182,34 +147,26 @@ export interface TeamMember {
   fullName: string;
   position: string;
   departmentUnit: string;
-  rollNumber: string;
+  rollNumber?: string;
   responsibilities: string;
   photoUrl: string;
   photoAlt: string;
-  isPlaceholder: boolean;
 }
 
-export interface AchievementItem {
+export interface ImpactItem {
   id: string;
   code: string;
-  category: 'Operational Deliverable' | 'Educational Initiative' | 'Verified Metric';
+  category: string;
   title: string;
-  period: string;
-  metricValue: string;
-  verificationStatus: 'Verified Scope' | 'Pending Verification';
   description: string;
-  contextNote: string;
-  isPlaceholder: boolean;
 }
 
 export interface ContactChannel {
   id: string;
   label: string;
-  channelType: 'Website' | 'Email' | 'GitHub' | 'Instagram' | 'LinkedIn' | 'Campus Desk';
+  channelType: string;
   displayValue: string;
-  url: string | null;
-  statusNote: string;
-  isPlaceholder: boolean;
+  url: string;
 }
 
 export interface ContactData {
@@ -222,7 +179,6 @@ export interface ContactData {
     institution: string;
     campus: string;
     city: string;
-    officeNote: string;
   };
   channels: ContactChannel[];
   participationTracks: {

@@ -4,7 +4,6 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HeroSection } from './sections/HeroSection';
 import { AboutSection } from './sections/AboutSection';
-import { ProjectsSection } from './sections/ProjectsSection';
 import { CodersClubSection } from './sections/CodersClubSection';
 import { EventsSection } from './sections/EventsSection';
 import { TeamSection } from './sections/TeamSection';
@@ -90,7 +89,6 @@ export function App() {
       <main id="main-content">
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
         <CodersClubSection />
         <EventsSection />
         <TeamSection />

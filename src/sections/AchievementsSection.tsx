@@ -18,46 +18,27 @@ export function AchievementsSection() {
           title={achievementsIntro.title}
           subtitle={achievementsIntro.subtitle}
           headingId="achievements-heading"
-          tag="NO FABRICATED METRICS"
+          tag="QUALITATIVE IMPACT"
         />
 
-        <div className="ledger-banner stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties} role="note">
-          {achievementsIntro.policyBanner}
-        </div>
+        <div className="impact-grid">
+          {achievementsData.map((item, idx) => (
+            <article
+              key={item.id}
+              className="impact-card stagger-item"
+              style={{ '--stagger-idx': idx } as CSSProperties}
+            >
+              <div className="impact-card__top">
+                <span className="impact-card__code">{item.code}</span>
+                <span className="mono-label" style={{ color: 'var(--color-ink-subtle-light)' }}>
+                  {item.category}
+                </span>
+              </div>
 
-        <div className="achievements-grid">
-          {achievementsData.map((item, idx) => {
-            const isVerified = item.verificationStatus === 'Verified Scope';
-            return (
-              <article
-                key={item.id}
-                className={`achievement-row ${
-                  isVerified ? 'achievement-row--verified' : 'achievement-row--pending'
-                } stagger-item`}
-                style={{ '--stagger-idx': idx } as CSSProperties}
-              >
-                <div className="achievement-row__top">
-                  <span className="mono-label" style={{ color: 'var(--color-ink-subtle-light)' }}>
-                    {item.code} · {item.category}
-                  </span>
-                  <span
-                    className={`status-chip ${
-                      isVerified ? 'status-chip--verified-light' : 'status-chip--pending-light'
-                    }`}
-                  >
-                    {item.verificationStatus}
-                  </span>
-                </div>
-
-                <div className="achievement-row__metric">{item.metricValue}</div>
-                <h3 className="achievement-row__title">{item.title}</h3>
-                <p className="achievement-row__desc">{item.description}</p>
-                <div className="achievement-row__context">
-                  {item.period} · {item.contextNote}
-                </div>
-              </article>
-            );
-          })}
+              <h3 className="impact-card__title">{item.title}</h3>
+              <p className="impact-card__desc">{item.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

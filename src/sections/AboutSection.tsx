@@ -19,7 +19,7 @@ export function AboutSection() {
           title={about.title}
           subtitle={about.subtitle}
           headingId="about-heading"
-          tag="VERIFIED MANDATE & WORKFLOW"
+          tag="4 CORE RESPONSIBILITIES"
         />
 
         <div className="about-editorial stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>

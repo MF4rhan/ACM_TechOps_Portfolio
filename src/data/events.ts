@@ -1,15 +1,15 @@
-import type { EventItem } from '../types/portfolio';
+import type { EventItem, EventsClosingPlate } from '../types/portfolio';
 
 /**
- * EVENTS & ACTIVITIES GALLERY DATA
- * Add any number of events below. The gallery layout and lightbox inspector
- * adapt automatically as photographs and verified event records are added.
+ * EVENTS & ACTIVITIES DATA
+ * Curated around the four genuine departmental activity areas and the verified
+ * auditorium foyer interactive minigames photograph.
  */
 export const eventsIntro = {
-  sectionCode: 'SEC-04 // EVENTS, GALLERY & ON-GROUND OPERATIONS',
-  title: 'Events & Activity Contact Sheet',
+  sectionCode: 'SEC-03 // ACTIVITIES & FIELD DOCUMENTATION',
+  title: 'Events & Departmental Activities',
   subtitle:
-    'Documenting ACM FAST introductory sessions, auditorium foyer interactive minigames, workshops, and technical support operations. Architectural plate placeholders currently indicate where official photography will be inserted.',
+    'How TechOps contributes across introductory sessions, interactive minigames, student-led workshops, and ongoing technical operations at ACM FAST.',
 };
 
 export const eventCategories: Array<EventItem['category'] | 'All'> = [
@@ -22,71 +22,56 @@ export const eventCategories: Array<EventItem['category'] | 'All'> = [
 
 export const eventsData: EventItem[] = [
   {
-    id: 'evt-intro-session',
-    code: 'FRAME-01',
+    id: 'evt-intro-sessions',
+    code: 'ACT-01',
     category: 'Introductory Sessions',
-    name: 'ACM Introductory Sessions — Event Details to be Confirmed',
-    date: 'Date to be confirmed',
-    location: 'Auditorium / Campus Venue (Pending exact room record)',
+    name: 'Introductory Sessions',
+    scopeLabel: 'Auditorium & Stage Tech',
     shortDescription:
-      'Society introductory sessions welcoming students to ACM FAST chapters, departments, and technical pathways.',
-    techOpsInvolvement:
-      'Confirmed TechOps Scope: Managing technical equipment, presentation feeds, audio checks, and live stage technology during introductory sessions.',
-    imageUrl: '/images/events/event-intro-session.svg',
-    imageAlt: 'Architectural contact-sheet placeholder for ACM Introductory Sessions equipment setup',
-    posterStatus: 'Official photograph pending confirmation',
-    externalUrl: null,
-    isPlaceholder: true,
+      'TechOps manages technical equipment, presentation support, and stage-related operations during ACM introductory sessions.',
+    visualType: 'schematic-intro',
   },
   {
     id: 'evt-minigames',
-    code: 'FRAME-02',
+    code: 'ACT-02',
     category: 'Interactive Minigames',
-    name: 'Auditorium Foyer Interactive Minigames — Details to be Confirmed',
-    date: 'Date to be confirmed',
-    location: 'Outside Main Auditorium',
+    name: 'Interactive Minigames',
+    scopeLabel: 'Auditorium Exterior Zone',
     shortDescription:
-      'Interactive student engagement minigames with small prizes operated outside the auditorium during society activities.',
-    techOpsInvolvement:
-      'Confirmed TechOps Scope: Setting up booth equipment, operating interactive minigame stations, and managing small-prize challenge flow.',
-    imageUrl: '/images/events/event-minigames.svg',
-    imageAlt: 'Architectural contact-sheet placeholder for interactive minigames outside the auditorium',
-    posterStatus: 'Official photograph pending confirmation',
-    externalUrl: null,
-    isPlaceholder: true,
+      'TechOps organizes and operates interactive minigames outside the auditorium during society activities, featuring student participation and small prizes.',
+    visualType: 'photo',
+    imageUrl: '/images/events/interactive-minigames.jpg',
+    imageAlt:
+      'FAST NUCES Karachi students participating in interactive minigames operated by ACM TechOps outside the auditorium during the 2026-27 introductory session',
   },
   {
     id: 'evt-workshops',
-    code: 'FRAME-03',
+    code: 'ACT-03',
     category: 'Workshops',
-    name: 'Technical Workshops & Learning Sessions — Details to be Confirmed',
-    date: 'Date to be confirmed',
-    location: 'Computing Labs / Seminar Rooms (Pending record)',
+    name: 'Workshops & Learning Sessions',
+    scopeLabel: 'Technical & Logistical Support',
     shortDescription:
-      'Society workshops and practical coding sessions delivered for FAST-NUCES Karachi students across technical tracks.',
-    techOpsInvolvement:
-      'Confirmed TechOps Scope: Assisting with technical readiness, workstation/projector logistics, and operational coordination for workshop facilitators.',
-    imageUrl: '/images/events/event-workshop-support.svg',
-    imageAlt: 'Architectural contact-sheet placeholder for workshop technical and logistical setup',
-    posterStatus: 'Official poster & photograph pending confirmation',
-    externalUrl: null,
-    isPlaceholder: true,
+      'TechOps assists with technical and logistical arrangements for student-led learning initiatives exploring competitive programming and practical coding skills beyond coursework.',
+    visualType: 'schematic-workshop',
   },
   {
-    id: 'evt-it-ops',
-    code: 'FRAME-04',
+    id: 'evt-tech-ops',
+    code: 'ACT-04',
     category: 'Technical Operations',
-    name: 'General Society IT & Technical Support — Ongoing Operations',
-    date: 'Academic cycle dates to be confirmed',
-    location: 'FAST NUCES Karachi Campus',
+    name: 'Technical Operations',
+    scopeLabel: 'Ongoing Chapter Support',
     shortDescription:
-      'Behind-the-scenes technical maintenance, rapid troubleshooting, and operational support across ACM FAST initiatives.',
-    techOpsInvolvement:
-      'Confirmed TechOps Scope: Providing general IT and technical assistance to sustain day-to-day society activities and event schedules.',
-    imageUrl: '/images/events/event-tech-support.svg',
-    imageAlt: 'Architectural contact-sheet placeholder for ACM general IT and technical operations',
-    posterStatus: 'Official photograph pending confirmation',
-    externalUrl: null,
-    isPlaceholder: true,
+      'TechOps provides ongoing general IT assistance, technical equipment readiness, and operational troubleshooting across ACM day-to-day activities.',
+    visualType: 'schematic-ops',
   },
 ];
+
+export const eventsClosingPlate: EventsClosingPlate = {
+  captionCode: 'FIELD DOCUMENTATION // INTERACTIVE MINIGAMES',
+  title: 'Interactive Minigames Outside the Auditorium',
+  description:
+    'Students engaging with TechOps-operated interactive minigame stations and small prizes outside the auditorium during the ACM NUCES 2026–27 Introductory Session.',
+  imageUrl: '/images/events/interactive-minigames.jpg',
+  imageAlt:
+    'ACM NUCES 2026-27 Introductory Session interactive minigames booth operated by TechOps outside the auditorium with students competing at laptops',
+};

@@ -19,18 +19,14 @@ export function TeamCard({ member, index }: TeamCardProps) {
       className={`team-card ${rankClass} stagger-item`}
       style={{ '--stagger-idx': index } as CSSProperties}
     >
-      <div
-        className={`team-card__photo ${
-          member.isPlaceholder ? 'team-card__photo--placeholder' : ''
-        }`}
-      >
+      <div className="team-card__photo">
         <img
           src={member.photoUrl}
           alt={member.photoAlt}
-          loading={member.isPlaceholder ? 'eager' : 'lazy'}
+          loading="lazy"
           decoding="async"
-          width={420}
-          height={500}
+          width={808}
+          height={910}
         />
       </div>
 
@@ -45,7 +41,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
 
         <h3 className="team-card__position">{member.position}</h3>
         <div className="team-card__name">{member.fullName}</div>
-        <div className="team-card__roll">{member.rollNumber}</div>
+        {member.rollNumber && <div className="team-card__roll">{member.rollNumber}</div>}
 
         <p className="team-card__resp">{member.responsibilities}</p>
       </div>

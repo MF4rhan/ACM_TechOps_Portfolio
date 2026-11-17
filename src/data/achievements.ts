@@ -1,96 +1,48 @@
-import type { AchievementItem } from '../types/portfolio';
+import type { ImpactItem } from '../types/portfolio';
 
 /**
- * ACHIEVEMENTS & VERIFIED IMPACT DATA
- * Strict policy: Never fabricate numerical metrics, attendance counts, or unverified claims.
- * Replace "Details to be confirmed" fields only with approved statistics and evidence.
+ * DEPARTMENTAL IMPACT DATA
+ * Qualitative presentation of TechOps' verified operational contributions
+ * without fabricated metrics, attendee figures, or unverified scoreboard claims.
  */
 export const achievementsIntro = {
-  sectionCode: 'SEC-06 // VERIFIED OUTCOMES & IMPACT LEDGER',
-  title: 'Achievements & Verification Ledger',
+  sectionCode: 'SEC-05 // DEPARTMENTAL IMPACT',
+  title: 'Operational Contributions',
   subtitle:
-    'A transparent record separating confirmed departmental operational roles from quantitative outcomes and milestones currently awaiting official organizer figures.',
-  policyBanner:
-    'Zero-Fabrication Policy: Numerical statistics, attendance numbers, and milestone counts remain marked "Details to be confirmed" until supplied directly by ACM FAST.',
+    'Rather than relying on inflated metrics, TechOps measures its value through dependable execution across society sessions, student engagement booths, and educational logistics.',
 };
 
-export const achievementsData: AchievementItem[] = [
+export const achievementsData: ImpactItem[] = [
   {
-    id: 'ach-verified-01',
-    code: 'VER-01',
-    category: 'Operational Deliverable',
-    title: 'Introductory Session Technical Operations',
-    period: 'Active Chapter Scope',
-    metricValue: 'Verified Scope',
-    verificationStatus: 'Verified Scope',
+    id: 'imp-01',
+    code: 'IMP-01',
+    category: 'Introductory & Chapter Sessions',
+    title: 'Supporting the Technical Execution of ACM Activities',
     description:
-      'Consistent readiness and management of stage technology, audio-visual setups, and technical equipment during ACM FAST introductory sessions.',
-    contextNote: 'Specific session dates and audience metrics: Details to be confirmed.',
-    isPlaceholder: false,
+      'Maintaining presentation readiness, audio-visual gear, and live stage technical operations so ACM introductory sessions run smoothly.',
   },
   {
-    id: 'ach-verified-02',
-    code: 'VER-02',
-    category: 'Operational Deliverable',
-    title: 'Auditorium Exterior Interactive Minigames',
-    period: 'Active Chapter Scope',
-    metricValue: 'Verified Scope',
-    verificationStatus: 'Verified Scope',
+    id: 'imp-02',
+    code: 'IMP-02',
+    category: 'Auditorium Foyer',
+    title: 'Creating Interactive Student Experiences',
     description:
-      'Setup and live operation of interactive minigames with small prizes outside the auditorium to engage students during society activities.',
-    contextNote: 'Specific activity editions and participant counts: Details to be confirmed.',
-    isPlaceholder: false,
+      'Setting up and running interactive minigame booths with small prizes outside the auditorium to welcome students and spark active participation.',
   },
   {
-    id: 'ach-verified-03',
-    code: 'VER-03',
-    category: 'Educational Initiative',
-    title: 'Coders Club Technical Learning Contributions',
-    period: 'Ongoing Initiative',
-    metricValue: 'Verified Scope',
-    verificationStatus: 'Verified Scope',
+    id: 'imp-03',
+    code: 'IMP-03',
+    category: 'Workshops & Coders Club',
+    title: 'Enabling Technical & Logistical Arrangements for Student-Led Learning',
     description:
-      'Supporting student-led learning initiatives, coding sessions, practical workshops, and competitive programming education under Coders Club.',
-    contextNote: 'Verified workshop count and session archive links: Details to be confirmed.',
-    isPlaceholder: false,
+      'Coordinating room readiness, equipment setup, and logistics that help facilitators deliver practical coding and competitive programming sessions.',
   },
   {
-    id: 'ach-metric-01',
-    code: 'STAT-01',
-    category: 'Verified Metric',
-    title: 'Total Workshops & Sessions Supported',
-    period: 'Current Term',
-    metricValue: 'Pending Confirmation',
-    verificationStatus: 'Pending Verification',
+    id: 'imp-04',
+    code: 'IMP-04',
+    category: 'Core Infrastructure',
+    title: 'Providing Operational IT Support',
     description:
-      'Reserved verified statistic slot for the exact count of technical workshops and Coders Club sessions supported during the term.',
-    contextNote: 'Awaiting approved figures from ACM FAST organizers.',
-    isPlaceholder: true,
-  },
-  {
-    id: 'ach-metric-02',
-    code: 'STAT-02',
-    category: 'Verified Metric',
-    title: 'Student Participation & Event Reach',
-    period: 'Current Term',
-    metricValue: 'Pending Confirmation',
-    verificationStatus: 'Pending Verification',
-    description:
-      'Reserved verified statistic slot for approved attendance and student engagement counts across ACM FAST sessions.',
-    contextNote: 'No estimated or extrapolated attendance numbers are displayed.',
-    isPlaceholder: true,
-  },
-  {
-    id: 'ach-metric-03',
-    code: 'STAT-03',
-    category: 'Verified Metric',
-    title: 'Completed Technical Deliverables & Milestones',
-    period: 'Current Term',
-    metricValue: 'Pending Confirmation',
-    verificationStatus: 'Pending Verification',
-    description:
-      'Reserved milestone ledger for verified projects, tools, and event outcomes approved for public attribution.',
-    contextNote: 'Details to be confirmed upon official review.',
-    isPlaceholder: true,
+      'Delivering steady IT assistance, equipment maintenance, and rapid troubleshooting across ACM FAST NUCES Karachi day-to-day activities.',
   },
 ];

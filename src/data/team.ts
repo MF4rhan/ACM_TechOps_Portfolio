@@ -2,20 +2,17 @@ import type { TeamMember } from '../types/portfolio';
 
 /**
  * TEAM & LEADERSHIP DATA
- * Public-facing executive roster consists strictly of:
- * - EXEC-01: One TechOps Head (center on desktop, first on mobile)
- * - EXEC-02: TechOps Co-Head 01 (left on desktop, second on mobile)
- * - EXEC-03: TechOps Co-Head 02 (right on desktop, third on mobile)
- *
- * Replace placeholders below only with official names, roll numbers, and portraits
- * confirmed by ACM FAST NUCES Karachi leadership.
+ * Official three-person executive leadership confirmed from ACM 2026 portrait assets:
+ * - EXEC-01: Uzair Mustafa — TechOps Head (Center on desktop, first on mobile)
+ * - EXEC-02: Ahsan Abbasi — TechOps Co-Head (Left on desktop, second on mobile)
+ * - EXEC-03: Muhammad Fareed — TechOps Co-Head (Right on desktop, third on mobile)
  */
 export const teamIntro = {
-  sectionCode: 'SEC-05 // EXECUTIVE LEADERSHIP',
+  sectionCode: 'SEC-04 // EXECUTIVE LEADERSHIP',
   title: 'Department Leadership',
   subtitle:
-    'TechOps operates under an executive triad of one Department Head and two equal Co-Heads. Official names, FAST-NUCES roll numbers, and approved portraits will populate these dossiers upon organizer confirmation.',
-  structureNote: 'APPROVED STRUCTURE: 1 TECHOPS HEAD · 2 TECHOPS CO-HEADS',
+    'ACM FAST TechOps is led by one Department Head and two Co-Heads overseeing technical equipment, interactive booths, workshop logistics, and society-wide IT support.',
+  structureNote: 'ACM 2026–27 · 1 HEAD · 2 CO-HEADS',
 };
 
 export const teamData: TeamMember[] = [
@@ -24,44 +21,38 @@ export const teamData: TeamMember[] = [
     slotCode: 'EXEC-01',
     roleRank: 'head',
     isPrimaryHead: true,
-    fullName: 'Details to be confirmed',
+    fullName: 'Uzair Mustafa',
     position: 'TECHOPS HEAD',
-    departmentUnit: 'Primary Executive Lead',
-    rollNumber: 'Roll No: To be confirmed',
+    departmentUnit: 'ACM 2026',
     responsibilities:
-      'Leads overall technical operations, oversees equipment readiness during ACM introductory sessions, coordinates general IT support, and aligns technical workflows across society activities.',
-    photoUrl: '/images/team/portrait-head.svg',
-    photoAlt: 'Official portrait placeholder for ACM FAST TechOps Head',
-    isPlaceholder: true,
+      'Leads departmental technical operations, introductory session equipment readiness, and society-wide IT coordination.',
+    photoUrl: '/images/team/uzair-mustafa-head.jpg',
+    photoAlt: 'Official ACM 2026 portrait of Uzair Mustafa, TechOps Head',
   },
   {
     id: 'role-techops-cohead-01',
     slotCode: 'EXEC-02',
     roleRank: 'co-head-1',
     isPrimaryHead: false,
-    fullName: 'Details to be confirmed',
+    fullName: 'Ahsan Abbasi',
     position: 'TECHOPS CO-HEAD',
-    departmentUnit: 'Executive Co-Lead',
-    rollNumber: 'Roll No: To be confirmed',
+    departmentUnit: 'ACM 2026',
     responsibilities:
-      'Co-leads departmental operations, oversees auditorium exterior interactive minigame setups and prize logistics, and coordinates live event technical execution.',
-    photoUrl: '/images/team/portrait-cohead.svg',
-    photoAlt: 'Official portrait placeholder for ACM FAST TechOps Co-Head 01',
-    isPlaceholder: true,
+      'Co-leads on-ground technical execution, auditorium exterior interactive minigames, and live event equipment setups.',
+    photoUrl: '/images/team/ahsan-abbasi-cohead.jpg',
+    photoAlt: 'Official ACM 2026 portrait of Ahsan Abbasi, TechOps Co-Head',
   },
   {
     id: 'role-techops-cohead-02',
     slotCode: 'EXEC-03',
     roleRank: 'co-head-2',
     isPrimaryHead: false,
-    fullName: 'Details to be confirmed',
+    fullName: 'Muhammad Fareed',
     position: 'TECHOPS CO-HEAD',
-    departmentUnit: 'Executive Co-Lead',
-    rollNumber: 'Roll No: To be confirmed',
+    departmentUnit: 'ACM 2026',
     responsibilities:
-      'Co-leads workshop technical and logistical coordination, supports Coders Club learning session setups, and manages general equipment availability for ACM FAST.',
-    photoUrl: '/images/team/portrait-cohead-02.svg',
-    photoAlt: 'Official portrait placeholder for ACM FAST TechOps Co-Head 02',
-    isPlaceholder: true,
+      'Co-leads workshop technical and logistical arrangements, learning session readiness, and operational troubleshooting.',
+    photoUrl: '/images/team/muhammad-fareed-cohead.jpg',
+    photoAlt: 'Official ACM 2026 portrait of Muhammad Fareed, TechOps Co-Head',
   },
 ];

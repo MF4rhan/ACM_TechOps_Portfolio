@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { eventCategories, eventsData, eventsIntro } from '../data/events';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { eventCategories, eventsClosingPlate, eventsData, eventsIntro } from '../data/events';
 import { SectionHeader } from '../components/SectionHeader';
 import { EventCard } from '../components/EventCard';
-import { LightboxModal } from '../components/LightboxModal';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import type { EventItem } from '../types/portfolio';
 
@@ -10,7 +9,6 @@ export function EventsSection() {
   const [selectedCategory, setSelectedCategory] = useState<EventItem['category'] | 'All'>('All');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [filterGeneration, setFilterGeneration] = useState(0);
-  const [inspectedEvent, setInspectedEvent] = useState<EventItem | null>(null);
   const timerRef = useRef<number | null>(null);
   const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
 
@@ -59,10 +57,10 @@ export function EventsSection() {
           title={eventsIntro.title}
           subtitle={eventsIntro.subtitle}
           headingId="events-heading"
-          tag={`SHOWING ${filteredEvents.length} PLATES`}
+          tag="4 ACTIVITY AREAS"
         />
 
-        <div className="filter-bar" role="group" aria-label="Filter events by activity type">
+        <div className="filter-bar" role="group" aria-label="Filter activities by category">
           {eventCategories.map((category) => (
             <button
               key={category}
@@ -87,14 +85,43 @@ export function EventsSection() {
                 event={event}
                 index={index}
                 animateFilter={filterGeneration > 0}
-                onInspect={setInspectedEvent}
               />
             ))}
           </div>
         </div>
-      </div>
 
-      <LightboxModal event={inspectedEvent} onClose={() => setInspectedEvent(null)} />
+        {/* Photographic Closing Composition */}
+        <figure
+          className="events-closing-plate stagger-item"
+          style={{ '--stagger-idx': 2 } as CSSProperties}
+        >
+          <div className="events-closing-plate__header">
+            <span className="events-closing-plate__code">
+              <span className="events-closing-plate__dot" aria-hidden="true" />
+              <span>{eventsClosingPlate.captionCode}</span>
+            </span>
+            <span className="mono-label" style={{ color: 'var(--color-ink-subtle-light)' }}>
+              ACM NUCES 2026–27 · INTRODUCTORY SESSION
+            </span>
+          </div>
+
+          <div className="events-closing-plate__frame">
+            <img
+              src={eventsClosingPlate.imageUrl}
+              alt={eventsClosingPlate.imageAlt}
+              loading="lazy"
+              decoding="async"
+              width={1016}
+              height={675}
+            />
+          </div>
+
+          <figcaption className="events-closing-plate__caption">
+            <h3 className="events-closing-plate__title">{eventsClosingPlate.title}</h3>
+            <p className="events-closing-plate__desc">{eventsClosingPlate.description}</p>
+          </figcaption>
+        </figure>
+      </div>
     </section>
   );
 }
