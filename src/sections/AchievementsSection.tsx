@@ -4,7 +4,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function AchievementsSection() {
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -12,7 +12,7 @@ export function AchievementsSection() {
       aria-labelledby="achievements-heading"
       className="section section--light grid-backdrop-light"
     >
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={achievementsIntro.sectionCode}
           title={achievementsIntro.title}
@@ -21,7 +21,7 @@ export function AchievementsSection() {
           tag="QUALITATIVE IMPACT"
         />
 
-        <div className="impact-grid">
+        <div className="impact-grid" data-reveal="stagger">
           {achievementsData.map((item, idx) => (
             <article
               key={item.id}

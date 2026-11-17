@@ -1,84 +1,116 @@
-import { useLayoutEffect, useRef, useState } from 'react';
-
-type RevealPhase = 'visible' | 'hidden';
+import { useLayoutEffect, useRef } from 'react';
 
 /**
- * Progressive-enhancement scroll reveal hook.
- * Content remains visible by default if reduced motion is preferred,
- * on tall capture viewports, or once scrolled past/into view.
+ * Granular progressive-enhancement scroll reveal hook.
+ * Attaches to a section or footer root container and individually observes
+ * each descendant `[data-reveal]` block so elements visibly animate as the
+ * visitor scrolls directly to them. Content stays visible immediately if
+ * reduced motion is preferred, on tall capture viewports, or if scrolled past.
  */
 export function useScrollReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
-  const [phase, setPhase] = useState<RevealPhase>('visible');
 
   useLayoutEffect(() => {
-    const element = ref.current;
-    if (!element) {
+    const root = ref.current;
+    if (!root) {
+      return;
+    }
+
+    const targets: HTMLElement[] = [];
+    if (root.hasAttribute('data-reveal')) {
+      targets.push(root);
+    }
+    root.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
+      targets.push(el);
+    });
+
+    if (targets.length === 0) {
       return;
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (
+    const disableMotion =
       prefersReducedMotion ||
       typeof IntersectionObserver === 'undefined' ||
-      window.innerHeight >= 2200
-    ) {
-      setPhase('visible');
+      window.innerHeight >= 2200;
+
+    if (disableMotion) {
+      targets.forEach((el) => {
+        el.classList.remove('reveal-pending');
+        el.classList.add('is-revealed');
+      });
       return;
     }
 
-    const isInOrAboveViewport = () => {
-      const rect = element.getBoundingClientRect();
-      return rect.top <= window.innerHeight - 24 || rect.bottom <= window.innerHeight;
+    const isInOrAboveViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.9 || rect.bottom <= window.innerHeight;
     };
 
-    if (isInOrAboveViewport()) {
-      setPhase('visible');
+    const revealElement = (el: HTMLElement) => {
+      el.classList.remove('reveal-pending');
+      el.classList.add('is-revealed');
+    };
+
+    const pending = new Set<HTMLElement>();
+
+    targets.forEach((el) => {
+      if (isInOrAboveViewport(el)) {
+        revealElement(el);
+      } else {
+        el.classList.remove('is-revealed');
+        el.classList.add('reveal-pending');
+        pending.add(el);
+      }
+    });
+
+    if (pending.size === 0) {
       return;
     }
-
-    setPhase('hidden');
-
-    const reveal = () => {
-      setPhase('visible');
-    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting || isInOrAboveViewport()) {
-            reveal();
-            observer.disconnect();
+          const target = entry.target as HTMLElement;
+          if (entry.isIntersecting || isInOrAboveViewport(target)) {
+            revealElement(target);
+            pending.delete(target);
+            observer.unobserve(target);
           }
         });
       },
-      { threshold: 0.04, rootMargin: '0px 0px -24px 0px' }
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
     );
 
-    observer.observe(element);
+    pending.forEach((el) => observer.observe(el));
 
-    const onScrollOrNav = () => {
-      if (isInOrAboveViewport()) {
-        reveal();
+    const checkPendingOnScroll = () => {
+      pending.forEach((el) => {
+        if (isInOrAboveViewport(el)) {
+          revealElement(el);
+          pending.delete(el);
+          observer.unobserve(el);
+        }
+      });
+      if (pending.size === 0) {
         observer.disconnect();
+        window.removeEventListener('scroll', checkPendingOnScroll);
+        window.removeEventListener('hashchange', checkPendingOnScroll);
+        window.removeEventListener('resize', checkPendingOnScroll);
       }
     };
 
-    window.addEventListener('scroll', onScrollOrNav, { passive: true });
-    window.addEventListener('hashchange', onScrollOrNav);
-    window.addEventListener('resize', onScrollOrNav, { passive: true });
+    window.addEventListener('scroll', checkPendingOnScroll, { passive: true });
+    window.addEventListener('hashchange', checkPendingOnScroll);
+    window.addEventListener('resize', checkPendingOnScroll, { passive: true });
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', onScrollOrNav);
-      window.removeEventListener('hashchange', onScrollOrNav);
-      window.removeEventListener('resize', onScrollOrNav);
+      window.removeEventListener('scroll', checkPendingOnScroll);
+      window.removeEventListener('hashchange', checkPendingOnScroll);
+      window.removeEventListener('resize', checkPendingOnScroll);
     };
   }, []);
 
-  return {
-    ref,
-    isVisible: phase === 'visible',
-    revealClassName: phase === 'visible' ? 'reveal is-visible' : 'reveal reveal--hidden',
-  };
+  return { ref };
 }

@@ -302,22 +302,73 @@ ol {
 @keyframes heroRevealUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    translate: 0 20px;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes photoSettle {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lineScaleX {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes svgPathDraw {
+  from {
+    stroke-dashoffset: 380;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawerSlideIn {
+  from {
+    opacity: 0;
+    translate: 0 -10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
 @keyframes cardFilterEnter {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    translate: 0 14px;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 }
 
@@ -333,14 +384,14 @@ ol {
 @keyframes nodePulseRing {
   0% {
     transform: scale(1);
-    opacity: 0.65;
+    opacity: 0.68;
   }
   70% {
-    transform: scale(2.15);
+    transform: scale(2.2);
     opacity: 0;
   }
   100% {
-    transform: scale(2.15);
+    transform: scale(2.2);
     opacity: 0;
   }
 }
@@ -348,63 +399,85 @@ ol {
 @keyframes schematicPanelFade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    translate: 0 8px;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 }
 
 .hero-anim {
-  animation: heroRevealUp 440ms var(--ease-editorial) both;
+  animation: heroRevealUp 560ms var(--ease-editorial) backwards;
   animation-delay: var(--hero-delay, 0ms);
 }
 
-/* Scroll Reveal & Staggered Grid Entrances */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 540ms var(--ease-editorial),
-    transform 540ms var(--ease-editorial);
-}
-
-.reveal--hidden {
+/* Granular Per-Element & Per-Group Scroll Reveal System */
+[data-reveal].reveal-pending,
+[data-reveal='header'].reveal-pending .section-header__meta,
+[data-reveal='header'].reveal-pending .section-header__title,
+[data-reveal='header'].reveal-pending .section-header__subtitle,
+[data-reveal='stagger'].reveal-pending .stagger-item,
+[data-reveal='photo'].reveal-pending .events-closing-plate__header,
+[data-reveal='photo'].reveal-pending .events-closing-plate__frame,
+[data-reveal='photo'].reveal-pending .events-closing-plate__caption {
   opacity: 0;
-  transform: translateY(20px);
+  translate: 0 24px;
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Header 3-part sequence */
+[data-reveal='header'].is-revealed .section-header__meta {
+  animation: revealUp 520ms var(--ease-editorial) backwards;
+  animation-delay: 0ms;
 }
 
-.reveal .stagger-item {
-  transition:
-    opacity 500ms var(--ease-editorial),
-    transform 500ms var(--ease-editorial),
-    border-color var(--duration-fast) var(--ease-editorial),
-    background-color var(--duration-fast) var(--ease-editorial);
-  transition-delay:
-    calc(var(--stagger-idx, 0) * 75ms),
-    calc(var(--stagger-idx, 0) * 75ms),
-    0ms,
-    0ms;
+[data-reveal='header'].is-revealed .section-header__title {
+  animation: revealUp 600ms var(--ease-editorial) backwards;
+  animation-delay: 100ms;
 }
 
-.reveal--hidden .stagger-item {
-  opacity: 0;
-  transform: translateY(18px);
+[data-reveal='header'].is-revealed .section-header__subtitle {
+  animation: revealUp 600ms var(--ease-editorial) backwards;
+  animation-delay: 200ms;
 }
 
-.reveal.is-visible .stagger-item {
-  opacity: 1;
-  transform: translateY(0);
+/* Single block reveal */
+[data-reveal='block'].is-revealed {
+  animation: revealUp 580ms var(--ease-editorial) backwards;
+  animation-delay: 60ms;
 }
 
-.reveal.is-visible .stagger-item:hover {
-  transition-delay: 0ms;
+/* Staggered card/item group */
+[data-reveal='stagger'].is-revealed .stagger-item {
+  animation: revealUp 580ms var(--ease-editorial) backwards;
+  animation-delay: calc(var(--stagger-idx, 0) * 115ms);
+}
+
+/* Portrait image subtle settle inside revealed Leadership cards */
+[data-reveal='stagger'].is-revealed .team-card__photo img {
+  animation: photoSettle 740ms var(--ease-editorial) backwards;
+  animation-delay: calc(var(--stagger-idx, 0) * 115ms + 80ms);
+}
+
+/* Closing Photographic Plate dedicated entrance */
+[data-reveal='photo'].is-revealed .events-closing-plate__header {
+  animation: revealUp 520ms var(--ease-editorial) backwards;
+  animation-delay: 0ms;
+}
+
+[data-reveal='photo'].is-revealed .events-closing-plate__frame {
+  animation: revealUp 660ms var(--ease-editorial) backwards;
+  animation-delay: 80ms;
+}
+
+[data-reveal='photo'].is-revealed .events-closing-plate__frame img {
+  animation: photoSettle 820ms var(--ease-editorial) backwards;
+  animation-delay: 80ms;
+}
+
+[data-reveal='photo'].is-revealed .events-closing-plate__caption {
+  animation: revealUp 600ms var(--ease-editorial) backwards;
+  animation-delay: 220ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -413,11 +486,13 @@ ol {
   }
 
   .hero-anim,
-  .reveal,
-  .reveal--hidden,
-  .reveal--hidden .stagger-item,
-  .reveal .stagger-item {
+  [data-reveal],
+  [data-reveal].reveal-pending,
+  [data-reveal] *,
+  .stagger-item,
+  .filter-card-enter {
     opacity: 1 !important;
+    translate: none !important;
     transform: none !important;
     animation: none !important;
     transition: none !important;
@@ -426,7 +501,8 @@ ol {
   .schematic__flow-line,
   .schematic__pulse-ring,
   .schematic__live::before,
-  .schematic__detail--animated {
+  .schematic__detail--animated,
+  .schematic__signal-dot {
     animation: none !important;
   }
 

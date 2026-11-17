@@ -39,10 +39,7 @@ export const eventsData: EventItem[] = [
     scopeLabel: 'Auditorium Exterior Zone',
     shortDescription:
       'TechOps organizes and operates interactive minigames outside the auditorium during society activities, featuring student participation and small prizes.',
-    visualType: 'photo',
-    imageUrl: '/images/events/interactive-minigames.jpg',
-    imageAlt:
-      'FAST NUCES Karachi students participating in interactive minigames operated by ACM TechOps outside the auditorium during the 2026-27 introductory session',
+    visualType: 'schematic-minigames',
   },
   {
     id: 'evt-workshops',

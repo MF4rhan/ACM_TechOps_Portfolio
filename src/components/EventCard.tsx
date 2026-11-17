@@ -38,6 +38,69 @@ function ActivitySchematic({ visualType }: { visualType: EventItem['visualType']
     );
   }
 
+  if (visualType === 'schematic-minigames') {
+    return (
+      <svg
+        viewBox="0 0 640 380"
+        role="img"
+        aria-label="Technical schematic depicting auditorium foyer interactive minigame stations and prize dispatch"
+      >
+        <rect width="640" height="380" fill="#14171C" />
+        <g stroke="rgba(242,240,233,0.06)" strokeWidth="1">
+          <path d="M0 76H640M0 152H640M0 228H640M0 304H640" />
+          <path d="M128 0V380M256 0V380M384 0V380M512 0V380" />
+        </g>
+        <rect x="36" y="36" width="568" height="308" fill="none" stroke="rgba(242,240,233,0.22)" />
+        <line x1="36" y1="82" x2="604" y2="82" stroke="rgba(242,240,233,0.16)" />
+        <text x="56" y="64" fill="rgba(242,240,233,0.72)" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="2">
+          SCHEMATIC // AUDITORIUM FOYER MINIGAME BOOTH
+        </text>
+
+        {/* Inter-station signal bus */}
+        <path d="M220 210H244M396 210H420" fill="none" stroke="#F25A38" strokeWidth="1.6" strokeDasharray="4 4" />
+
+        {/* Left Module: Station Console */}
+        <rect x="68" y="118" width="152" height="184" fill="#111316" stroke="#F25A38" strokeWidth="1.5" />
+        <text x="82" y="140" fill="rgba(242,240,233,0.65)" fontFamily="IBM Plex Mono, monospace" fontSize="9.5" letterSpacing="1.2">
+          STATION // INPUT
+        </text>
+        <rect x="84" y="154" width="120" height="58" fill="#171A1F" stroke="rgba(242,240,233,0.24)" />
+        <path d="M104 183H144M124 167V199" fill="none" stroke="#F25A38" strokeWidth="2" />
+        <circle cx="176" cy="176" r="5" fill="#F25A38" />
+        <circle cx="188" cy="190" r="5" fill="#5B73E8" />
+        <line x1="84" y1="234" x2="188" y2="234" stroke="rgba(242,240,233,0.35)" strokeWidth="2" />
+        <line x1="84" y1="254" x2="164" y2="254" stroke="rgba(242,240,233,0.2)" strokeWidth="2" />
+        <circle cx="90" cy="280" r="3.5" fill="#F25A38" />
+        <text x="102" y="283" fill="rgba(242,240,233,0.55)" fontFamily="IBM Plex Mono, monospace" fontSize="9">
+          PARTICIPANT A
+        </text>
+
+        {/* Center Module: Interactive Challenge & Score Controller */}
+        <rect x="244" y="118" width="152" height="184" fill="#111316" stroke="rgba(242,240,233,0.34)" strokeWidth="1.5" />
+        <text x="258" y="140" fill="rgba(242,240,233,0.65)" fontFamily="IBM Plex Mono, monospace" fontSize="9.5" letterSpacing="1.2">
+          CHALLENGE // TIMER
+        </text>
+        <circle cx="320" cy="196" r="34" fill="none" stroke="rgba(242,240,233,0.28)" strokeWidth="1.4" />
+        <circle cx="320" cy="196" r="22" fill="rgba(242,90,56,0.16)" stroke="#F25A38" strokeWidth="1.6" />
+        <circle cx="320" cy="196" r="6" fill="#F25A38" />
+        <rect x="266" y="248" width="108" height="20" fill="#171A1F" stroke="rgba(242,240,233,0.24)" />
+        <rect x="272" y="253" width="62" height="10" fill="#F25A38" fillOpacity="0.75" />
+        <text x="266" y="286" fill="rgba(242,240,233,0.55)" fontFamily="IBM Plex Mono, monospace" fontSize="9">
+          SCORE READOUT
+        </text>
+
+        {/* Right Module: Prize Dispatch */}
+        <rect x="420" y="118" width="152" height="184" fill="#111316" stroke="#344FC5" strokeWidth="1.5" />
+        <text x="434" y="140" fill="#9CB0FF" fontFamily="IBM Plex Mono, monospace" fontSize="9.5" letterSpacing="1.2">
+          PRIZE // DISPATCH
+        </text>
+        <polygon points="496,158 532,216 460,216" fill="rgba(52,79,197,0.22)" stroke="#5B73E8" strokeWidth="1.6" />
+        <rect x="440" y="236" width="112" height="18" fill="rgba(52,79,197,0.25)" stroke="#5B73E8" />
+        <rect x="440" y="264" width="84" height="14" fill="none" stroke="rgba(242,240,233,0.25)" />
+      </svg>
+    );
+  }
+
   if (visualType === 'schematic-workshop') {
     return (
       <svg
@@ -98,29 +161,13 @@ function ActivitySchematic({ visualType }: { visualType: EventItem['visualType']
 }
 
 export function EventCard({ event, index, animateFilter = false }: EventCardProps) {
-  const isPhoto = event.visualType === 'photo' && event.imageUrl;
-
   return (
     <article
-      className={`event-card ${isPhoto ? 'event-card--featured-photo' : ''} ${
-        animateFilter ? 'filter-card-enter' : 'stagger-item'
-      }`}
+      className={`event-card ${animateFilter ? 'filter-card-enter' : 'stagger-item'}`}
       style={{ '--stagger-idx': index } as CSSProperties}
     >
       <div className="event-card__media">
-        {isPhoto ? (
-          <img
-            src={event.imageUrl}
-            alt={event.imageAlt ?? event.name}
-            loading="lazy"
-            decoding="async"
-            width={1016}
-            height={675}
-            className="event-card__real-photo"
-          />
-        ) : (
-          <ActivitySchematic visualType={event.visualType} />
-        )}
+        <ActivitySchematic visualType={event.visualType} />
       </div>
 
       <div className="event-card__body">

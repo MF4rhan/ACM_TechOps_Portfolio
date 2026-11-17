@@ -1,5 +1,7 @@
+import type { CSSProperties } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { siteData } from '../data/site';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import type { SocialLink } from '../types/portfolio';
 
 function SocialPlatformIcon({ id }: { id: SocialLink['id'] }) {
@@ -31,17 +33,18 @@ function SocialPlatformIcon({ id }: { id: SocialLink['id'] }) {
 export function Footer() {
   const { brand, footer, navigation } = siteData;
   const currentYear = new Date().getFullYear();
+  const { ref } = useScrollReveal<HTMLElement>();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="footer grid-backdrop-dark">
+    <footer ref={ref} className="footer grid-backdrop-dark">
       <div className="container">
-        <div className="footer__grid">
+        <div className="footer__grid" data-reveal="stagger">
           {/* Zone 1: Branding Block */}
-          <div className="footer__colophon">
+          <div className="footer__colophon stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
             <div className="footer__brand-lockup">
               <span className="navbar__mark" aria-hidden="true" />
               <div className="footer__brand-stack">
@@ -63,8 +66,12 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Zone 2: Quick Navigation (00 - 07) */}
-          <nav aria-label="Footer quick navigation">
+          {/* Zone 2: Quick Navigation (00 - 06) */}
+          <nav
+            aria-label="Footer quick navigation"
+            className="stagger-item"
+            style={{ '--stagger-idx': 1 } as CSSProperties}
+          >
             <div className="footer__nav-title">Quick Navigation</div>
             <ul className="footer__nav-list">
               {navigation.map((item) => (
@@ -80,7 +87,7 @@ export function Footer() {
           </nav>
 
           {/* Zone 3: Official ACM Social Media */}
-          <div>
+          <div className="stagger-item" style={{ '--stagger-idx': 2 } as CSSProperties}>
             <div className="footer__nav-title">Official ACM Channels</div>
             <ul className="footer__socials">
               {footer.officialSocials.map((social) => (
@@ -112,7 +119,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright & Developer Credit Bar */}
-        <div className="footer__credit-bar">
+        <div className="footer__credit-bar" data-reveal="block">
           <span>
             © {currentYear} ACM FAST NUCES KARACHI. ALL RIGHTS RESERVED.
           </span>

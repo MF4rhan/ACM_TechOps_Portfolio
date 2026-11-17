@@ -5,7 +5,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function AboutSection() {
   const { about } = siteData;
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -13,7 +13,7 @@ export function AboutSection() {
       aria-labelledby="about-heading"
       className="section section--light grid-backdrop-light"
     >
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={about.sectionCode}
           title={about.title}
@@ -22,8 +22,8 @@ export function AboutSection() {
           tag="4 CORE RESPONSIBILITIES"
         />
 
-        <div className="about-editorial stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
-          <div className="about-editorial__prose">
+        <div className="about-editorial" data-reveal="stagger">
+          <div className="about-editorial__prose stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
             <h3 className="about-editorial__heading">{about.overviewHeading}</h3>
             {about.overviewBody.map((paragraph) => (
               <p key={paragraph} className="about-editorial__body">
@@ -32,7 +32,11 @@ export function AboutSection() {
             ))}
           </div>
 
-          <aside className="about-protocol" aria-label={about.distinctionNote.label}>
+          <aside
+            className="about-protocol stagger-item"
+            style={{ '--stagger-idx': 1 } as CSSProperties}
+            aria-label={about.distinctionNote.label}
+          >
             <span className="about-protocol__label">{about.distinctionNote.label}</span>
             <p style={{ fontSize: '0.94rem', color: 'var(--color-graphite)' }}>
               {about.distinctionNote.text}
@@ -40,7 +44,7 @@ export function AboutSection() {
           </aside>
         </div>
 
-        <div className="about-pillars">
+        <div className="about-pillars" data-reveal="stagger">
           {about.pillars.map((pillar, idx) => (
             <article
               key={pillar.index}
@@ -62,7 +66,7 @@ export function AboutSection() {
           ))}
         </div>
 
-        <div className="workflow-strip" aria-label="Operational execution phases">
+        <div className="workflow-strip" data-reveal="stagger" aria-label="Operational execution phases">
           {about.workflowSteps.map((step, idx) => (
             <div
               key={step.step}

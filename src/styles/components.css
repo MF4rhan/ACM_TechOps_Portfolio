@@ -170,6 +170,7 @@
   justify-content: space-between;
   border-top: 1px solid var(--border-dark);
   overflow-y: auto;
+  animation: drawerSlideIn 260ms var(--ease-editorial) both;
 }
 
 .navbar__drawer-list {
@@ -366,6 +367,16 @@
   transform-box: fill-box;
   transform-origin: center;
   animation: nodePulseRing 2.2s var(--ease-editorial) infinite;
+}
+
+.schematic__signal-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nodePulseRing 1.8s var(--ease-editorial) infinite;
+  transition:
+    cx 260ms var(--ease-editorial),
+    cy 260ms var(--ease-editorial),
+    fill 260ms var(--ease-editorial);
 }
 
 .schematic__tabs {

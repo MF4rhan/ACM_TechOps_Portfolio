@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { eventCategories, eventsClosingPlate, eventsData, eventsIntro } from '../data/events';
 import { SectionHeader } from '../components/SectionHeader';
 import { EventCard } from '../components/EventCard';
@@ -10,7 +10,7 @@ export function EventsSection() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [filterGeneration, setFilterGeneration] = useState(0);
   const timerRef = useRef<number | null>(null);
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   useEffect(() => {
     return () => {
@@ -41,7 +41,7 @@ export function EventsSection() {
       setSelectedCategory(category);
       setFilterGeneration((g) => g + 1);
       setIsTransitioning(false);
-    }, 130);
+    }, 140);
   };
 
   const filteredEvents =
@@ -51,7 +51,7 @@ export function EventsSection() {
 
   return (
     <section id="events" aria-labelledby="events-heading" className="section section--light">
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={eventsIntro.sectionCode}
           title={eventsIntro.title}
@@ -60,7 +60,7 @@ export function EventsSection() {
           tag="4 ACTIVITY AREAS"
         />
 
-        <div className="filter-bar" role="group" aria-label="Filter activities by category">
+        <div className="filter-bar" data-reveal="block" role="group" aria-label="Filter activities by category">
           {eventCategories.map((category) => (
             <button
               key={category}
@@ -78,7 +78,7 @@ export function EventsSection() {
           className={`filter-stage ${isTransitioning ? 'filter-stage--leaving' : ''}`}
           aria-live="polite"
         >
-          <div className="events-grid" key={`${selectedCategory}-${filterGeneration}`}>
+          <div className="events-grid" data-reveal="stagger" key={`${selectedCategory}-${filterGeneration}`}>
             {filteredEvents.map((event, index) => (
               <EventCard
                 key={event.id}
@@ -90,11 +90,8 @@ export function EventsSection() {
           </div>
         </div>
 
-        {/* Photographic Closing Composition */}
-        <figure
-          className="events-closing-plate stagger-item"
-          style={{ '--stagger-idx': 2 } as CSSProperties}
-        >
+        {/* Photographic Closing Composition (exclusive placement of genuine minigames photograph) */}
+        <figure className="events-closing-plate" data-reveal="photo">
           <div className="events-closing-plate__header">
             <span className="events-closing-plate__code">
               <span className="events-closing-plate__dot" aria-hidden="true" />

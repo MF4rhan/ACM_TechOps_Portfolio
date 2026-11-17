@@ -8,7 +8,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ sectionCode, title, subtitle, headingId, tag }: SectionHeaderProps) {
   return (
-    <div className="section-header">
+    <div className="section-header" data-reveal="header">
       <div className="section-header__meta">
         <span className="section-header__code">
           <span className="section-header__dot" aria-hidden="true" />

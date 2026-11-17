@@ -61,7 +61,7 @@ export function HeroSchematic({ nodes }: HeroSchematicProps) {
   return (
     <aside
       className="schematic hero-anim"
-      style={{ ['--hero-delay' as string]: '130ms' }}
+      style={{ ['--hero-delay' as string]: '200ms' }}
       aria-label="Interactive TechOps operational blueprint"
     >
       <div className="schematic__bar">
@@ -102,6 +102,15 @@ export function HeroSchematic({ nodes }: HeroSchematicProps) {
             strokeWidth="2"
             strokeDasharray="6 6"
             className="schematic__flow-line"
+          />
+
+          {/* Subtle signal pulse marker at midpoint along active path */}
+          <circle
+            cx={(260 + activeCoords.x) / 2}
+            cy={(78 + activeCoords.y) / 2}
+            r="3"
+            fill={activeColor}
+            className="schematic__signal-dot"
           />
 
           {/* Interactive Topology Nodes */}

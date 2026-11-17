@@ -126,9 +126,7 @@ export interface EventItem {
   name: string;
   scopeLabel: string;
   shortDescription: string;
-  visualType: 'photo' | 'schematic-intro' | 'schematic-workshop' | 'schematic-ops';
-  imageUrl?: string;
-  imageAlt?: string;
+  visualType: 'schematic-intro' | 'schematic-minigames' | 'schematic-workshop' | 'schematic-ops';
 }
 
 export interface EventsClosingPlate {

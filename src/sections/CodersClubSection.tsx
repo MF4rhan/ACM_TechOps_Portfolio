@@ -4,7 +4,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function CodersClubSection() {
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -12,7 +12,7 @@ export function CodersClubSection() {
       aria-labelledby="coders-club-heading"
       className="section section--cobalt grid-backdrop-dark"
     >
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={codersClubData.sectionCode}
           title={codersClubData.title}
@@ -21,7 +21,7 @@ export function CodersClubSection() {
           tag="EDUCATIONAL MONOGRAPH"
         />
 
-        <div className="coders-monograph">
+        <div className="coders-monograph" data-reveal="stagger">
           <div className="coders-monograph__lead stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
             <p className="coders-hero-band__statement">{codersClubData.mandateStatement}</p>
             <p className="coders-monograph__body">{codersClubData.supportingCopy}</p>
@@ -74,7 +74,14 @@ export function CodersClubSection() {
 
               {/* Connected Nodes */}
               <rect x="330" y="96" width="264" height="190" fill="#111316" fillOpacity="0.45" stroke="rgba(242,240,233,0.2)" strokeDasharray="4 4" />
-              <path d="M352 240L430 148L508 192L572 118" fill="none" stroke="#F25A38" strokeWidth="2.4" />
+              <path
+                d="M352 240L430 148L508 192L572 118"
+                fill="none"
+                stroke="#F25A38"
+                strokeWidth="2.4"
+                strokeDasharray="380"
+                className="coders-graph-path"
+              />
               <circle cx="352" cy="240" r="7" fill="#F2F0E9" />
               <circle cx="430" cy="148" r="7" fill="#F25A38" />
               <circle cx="508" cy="192" r="7" fill="#7C92FF" />
@@ -86,7 +93,7 @@ export function CodersClubSection() {
           </figure>
         </div>
 
-        <div className="coders-themes" aria-label="Coders Club learning focus areas">
+        <div className="coders-themes" data-reveal="stagger" aria-label="Coders Club learning focus areas">
           {codersClubData.learningThemes.map((theme, idx) => (
             <article
               key={theme.code}

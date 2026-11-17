@@ -5,7 +5,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function ContactSection() {
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section
@@ -13,7 +13,7 @@ export function ContactSection() {
       aria-labelledby="contact-heading"
       className="section section--dark grid-backdrop-dark"
     >
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={contactData.sectionCode}
           title={contactData.title}
@@ -22,7 +22,7 @@ export function ContactSection() {
           tag="FAST-NUCES KARACHI CHAPTER"
         />
 
-        <div className="contact-layout">
+        <div className="contact-layout" data-reveal="stagger">
           <div className="contact-callout stagger-item" style={{ '--stagger-idx': 0 } as CSSProperties}>
             <h3 className="contact-callout__title">{contactData.joinCalloutTitle}</h3>
             <p style={{ fontSize: '0.96rem', color: 'var(--color-ink-muted-dark)' }}>

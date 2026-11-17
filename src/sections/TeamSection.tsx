@@ -4,11 +4,11 @@ import { TeamCard } from '../components/TeamCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function TeamSection() {
-  const { ref, revealClassName } = useScrollReveal<HTMLDivElement>();
+  const { ref } = useScrollReveal<HTMLDivElement>();
 
   return (
     <section id="team" aria-labelledby="team-heading" className="section section--dark">
-      <div ref={ref} className={`container ${revealClassName}`}>
+      <div ref={ref} className="container">
         <SectionHeader
           sectionCode={teamIntro.sectionCode}
           title={teamIntro.title}
@@ -17,7 +17,7 @@ export function TeamSection() {
           tag={teamIntro.structureNote}
         />
 
-        <div className="team-podium-grid">
+        <div className="team-podium-grid" data-reveal="stagger">
           {teamData.map((member, index) => (
             <TeamCard key={member.id} member={member} index={index} />
           ))}
